@@ -1,0 +1,29 @@
+:Base GWY_Config.hlp
+:Title Configuración de Gateway Multiprotocolo
+:Index dummy=dummy.hlp ;(This is necessary when using KLinks - because of a bug in the help
+:Link dummy.hlp        ; compiler. Without this only the first keyword would be looked up!)
+1 Página detallada de temas=SHM_contents9999@GWY_Config.hlp
+1 Configuración de Gateway Multiprotocolo
+1 Información
+2 Acerca de GWY_Config=SHM_contents0001@GWY_Config.hlp
+1 Introducción
+2 Inicio de la aplicación=SHM_contents0002@GWY_Config.hlp
+2 Variantes de aplicaciones disponibles=SHM_contents0003@GWY_Config.hlp
+2 Información en la barra de estado=SHM_contents0004@GWY_Config.hlp
+1 Guia de usuario
+2 Opciones en la Barra de Herramientas=SHM_contents0005@GWY_Config.hlp
+2 Configuraciones de la aplicación=SHM_contents0006@GWY_Config.hlp
+2 Configuraciones del Equipo
+3 General=SHM_contents0007@GWY_Config.hlp
+3 Puerto Ethernet=SHM_contents0008@GWY_Config.hlp
+3 Puertos Serie=SHM_contents0009@GWY_Config.hlp
+3 Entradas / Salidas=SHM_contents0010@GWY_Config.hlp
+3 Parámetros=SHM_contents0011@GWY_Config.hlp
+3 Servidor Web=SHM_contents0012@GWY_Config.hlp
+3 Identifiación del Equipo=SHM_contents0013@GWY_Config.hlp
+3 Actualizar FW=SHM_contents0014@GWY_Config.hlp
+3 Estadísticas=SHM_contents0015@GWY_Config.hlp
+3 Variadores=SHM_contents0016@GWY_Config.hlp
+3 Gateway DNP3=SHM_contents0017@GWY_Config.hlp
+1 Solución de problemas
+2 Problemas más comunues=SHM_contents0018@GWY_Config.hlp

@@ -1,0 +1,1 @@
+Revision 52 : última version antes de cambio de longitud de caracteres para denominacion de versiones de Firmware. 

@@ -1,0 +1,172 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+<style type="text/css">
+.wpmd {font: normal normal bold 12px arial; color:#190072;} 
+.ws14 {font-size: 19px;}
+.ws18 {font-size: 24px;}
+
+DIV,UL,OL 
+{
+ margin-top: 0px;
+ margin-bottom: 0px;
+}
+</style>
+<style type="text/css">
+a.style1:link{color:#FFFFFF;text-decoration: none;}
+a.style1:visited{color:#FFFFFF;text-decoration: none;}
+a.style1:active{color:#FFFFFF;text-decoration: none;}
+a.style1:hover{color:#FFFFFF;text-decoration: none;}
+</style>
+<style type="text/css">
+div#container
+{
+	position:relative;
+	width: 800px;
+	margin-top: 0px;
+	margin-left: auto;
+	margin-right: auto;
+	text-align:left; 
+}
+body {text-align:center;margin:0}
+.Items{
+	font-family:"Tahoma";
+	font-weight:bold;
+	font-size:14px;
+	text-align:left;
+ }
+</style>
+
+<script type="text/javascript">
+function importaXML(archivo)
+{
+	var xmlDoc;
+	if (window.ActiveXObject){ 	// code for IE
+		xmlDoc=new ActiveXObject("Microsoft.XMLDOM");
+		xmlDoc.async=false;
+		xmlDoc.load(archivo);
+	}
+	else{		// mozxilla, chrome, zafari, opera
+		var xmlhttp = new window.XMLHttpRequest();
+		xmlhttp.open("GET",archivo,false);
+		xmlhttp.send(null);
+		xmlDoc = xmlhttp.responseXML.documentElement;	  
+	}
+	return(xmlDoc);
+}
+
+function rollon(myid) {
+	var el =document.getElementById(myid);
+	el.origColor=el.style.backgroundColor;
+	el.style.backgroundColor='#AACAEE';
+} 
+
+function rolloff(myid) {
+	var el =document.getElementById(myid);
+	el.style.backgroundColor=el.origColor;
+} 
+
+function addNewRow(logsQtty)
+{
+	var retCode;
+	do{
+		retCode = deleteOldRows();
+	}while(retCode == true);
+	documentoXML = importaXML("logs.xml?LogReadNext=10&LogParam="+logsQtty);
+	logCntr = documentoXML.getElementsByTagName("OpCode")[0].firstChild.nodeValue;	
+//	if (logCntr > 10) return;	
+	for (tmpCntr= 1; tmpCntr<=logCntr ; tmpCntr++)	{
+		var el =document.getElementById("shape3");
+		el.style.top = 201+(tmpCntr*23);
+		var el2 =document.getElementById("text5");
+		el2.style.top = 210+(tmpCntr*23);
+		
+		documentoXML = importaXML("logs.xml?LogReadNext=1");
+		opCode = documentoXML.getElementsByTagName("OpCode")[0].firstChild.nodeValue;
+		if (opCode != 0x01)	break;
+		copyRow(documentoXML);
+	}
+	
+}
+
+function copyRow(xmlDoc) 
+{
+var TABLE = document.getElementById("BaseTable");
+var TROW = document.getElementById("BaseTrow");
+var content = TROW.getElementsByTagName("td");
+var newRow = TABLE.insertRow(-1);
+newRow.className = TROW.attributes['class'].value;
+newRow.onmouseover = function()	{
+		this.origColor=this.style.backgroundColor;
+		this.style.backgroundColor='#AACAEE';}
+newRow.onmouseout = function(){
+		this.style.backgroundColor=this.origColor;} 
+var newCell_1 = newRow.insertCell(newRow.cells.length);
+newCell_1.innerHTML = xmlDoc.getElementsByTagName("LogDate")[0].firstChild.nodeValue;
+var newCell_2 = newRow.insertCell(newRow.cells.length);
+newCell_2.innerHTML = xmlDoc.getElementsByTagName("LogId")[0].firstChild.nodeValue;
+var newCell_3 = newRow.insertCell(newRow.cells.length);
+newCell_3.innerHTML = xmlDoc.getElementsByTagName("LogParam")[0].firstChild.nodeValue;
+var newCell_4 = newRow.insertCell(newRow.cells.length);
+newCell_4.innerHTML = xmlDoc.getElementsByTagName("LogText")[0].firstChild.nodeValue;
+}
+
+function deleteOldRows() 
+{
+	var TABLE = document.getElementById("BaseTable");
+	try{
+		var newRow = TABLE.deleteRow(1);
+	}
+	catch(e)
+	{
+		return (false);
+	}
+	return (true);
+}
+</script>
+</head>
+
+<body onload=addNewRow(5)>
+<div id="container">
+<div id="shape1" style="height:29px; background-color:#A8A8A8">&nbsp;</div>
+<div id="shape1" style="position:absolute; left:0px; top:30px; width:800px; height:99px; background-color:#AACCEE">&nbsp;</div>
+<div id="shape2" style="position:absolute; left:0px; top:130px; width:800px; height:50px; background-color:#A8A8A8">&nbsp;</div>
+<div id="text1" style="position:absolute; left:50px; top:47px; width:350px; height:60px"><div class="wpmd">
+<div><font class="ws14" color="#000080" face="Tahoma"><B>Conversor de protocolos</B></font></div>
+<div><font class="ws14" color="#000080" face="Tahoma"><B>GWY-ME-ETH/RS232/RS485-IO</B></font></div>
+</div></div>
+<div id="text3" style="position:absolute; overflow:hidden; left:400px; top:58px; width:300px; height:42px"><div class="wpmd">
+<div><font class="ws18" color="#000080" face="Tahoma"><B>LISTADO DE LOGS</B></font></div>
+</div></div>
+<div id="text2" style="position:absolute; overflow:hidden; left:10px; top:141px; width:800px; height:20px">
+<div class="wpmd"><div>
+<font face="Tahoma"><B><a href="index.html" class="style1">PRINCIPAL</a></B></font>
+<font color="#333333" face="Tahoma"><B>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </B></font>
+<font color="#FFFFFF" face="Tahoma"><B>|</B></font><font color="#333333" face="Tahoma"><B>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </B>
+<input name="LogsQtty" id="LogsQtty" type="text" value="10" style="position:relative; width:30px; top:1px;">
+</font><font face="Tahoma"><B><a href="javascript:addNewRow(LogsQtty.value);" class="style1"> ACTUALIZAR</a></B></font><font color="#333333" face="Tahoma"><B>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </B><font color="#333333" face="Tahoma"></font>
+</div></div></div>
+<div id="table1" style="position:absolute; overflow:hidden; left:0px; top:170px; width:800px;"><div class="wpmd">
+<div><TABLE id="BaseTable" class="Item" bgcolor="#FFFFFF" border=3 bordercolor="#808080" >
+<TR valign=top id="BaseTrow" class="Items">
+<TD width=200><div class="Items">
+<div>&nbsp; FECHA</div>
+</div></TD>
+<TD width=70><div class="Items">
+<div>&nbsp; ID</div>
+</div></TD>
+<TD width=80><div class="Items">
+<div>&nbsp; PARAM</div>
+</div></TD>
+<TD width=600><div class="Items">
+<div>&nbsp; DESCRIPCION</div>
+</div></TD>
+</TR></TABLE>
+</div></div></div>
+<div id="shape3" style="position:absolute; overflow:hidden; left:0px; top:201px; width:800px; height:38px; background-color:#A8A8A8">&nbsp;</div>
+<div id="text5" style="position:absolute; overflow:hidden; left:600px; top:210px; width:272px; height:25px;"><div class="wpmd">
+<div><font color="#FFFFFF" face="Tahoma"><B>© 2010 Ingenea SRL</B></font></div>
+</div></div>
+</div></body>
+</html>

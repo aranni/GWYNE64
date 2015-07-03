@@ -1,0 +1,278 @@
+#include "MC9S12NE64.h"
+#include "datatypes.h"
+#include "stdio.h"
+
+#include "Commdef.h"
+#include "pConfig.h"
+#include "Global.h"
+
+//  Version de Firmware..
+//const UINT8 FW_VersionCode[16] = "GWY-B-001.619.2";
+
+#pragma CONST_SEG  VERSION_ROM
+
+const struct CFG_FW_VERSION FwVersionData = {
+
+  FW_VERSION_DEF,
+  __DATE__,
+  __TIME__,
+  FW_TYPE_CODE,
+    'B', 
+};
+  
+#pragma CONST_SEG DEFAULT
+  
+///////////////////////////////////////////////////////////////////////////////
+// Estados del proceso PROC_CONFIG
+///////////////////////////////////////////////////////////////////////////////
+//
+const EVENT_FUNCTION	ConfigProc_IDLE [] =
+{
+{EVT_TMR_TIMEOUT 	    , f_ConfigIdleTimeout	},
+{EVT_CFG_RXMSG 	      , f_ConfigRxCfgFrame  },
+{EVT_OTHER_MSG     		, f_Consume           }};
+
+
+///////////////////////////////////////////////////////////////////////////////
+// Transiciones para el proceso PROC_CONFIG
+///////////////////////////////////////////////////////////////////////////////
+//
+//-----------------------------------------------------------------------------
+// Timeout recibido...
+//-----------------------------------------------------------------------------
+//
+void f_ConfigIdleTimeout (void)
+{
+  if (TCP_SendCfgBuff()){				  // Error en envio de respuesta
+    // Error en reintento, acciones correctivas
+    DummyVar = 0x00;
+  }
+	return;
+}
+
+//-----------------------------------------------------------------------------
+// Analizar mensaje de configuracion recibido por canal TCP.
+//-----------------------------------------------------------------------------
+//
+void f_ConfigRxCfgFrame (void)
+{
+  UINT8   TmpWriteByte;
+ 
+  switch (CfgMsgFrame.OpCode){
+ 
+    case CFG_TCP_READ:
+      CfgMsgInfo.InvCode      = SYS_ConfigParam.InvCode;
+      CfgMsgInfo.ScanRate     = SYS_ConfigParam.ScanRate;
+      CfgMsgInfo.RunConfig    = SYS_ConfigParam.RunConfig;
+//      CfgMsgInfo.SIE_CmdWordA = SIE_ConfigParam.CmdWordA;
+      eeprom_read_buffer(EE_ADDR_SIE_CMDWA, (UINT8 *)&(CfgMsgInfo.SIE_CmdWordA), 2); 
+      (void)memcpy ((UINT8 *)(&(CfgMsgFrame.Data)),
+              (UINT8 *)(&CfgMsgInfo),
+              sizeof(CFG_MSG_INFO));        
+      CfgMsgFrame.Len = sizeof(CFG_MSG_INFO);      
+      break;    
+
+
+    case CFG_TCP_READ_CTES:
+      (void)memcpy ((UINT8 *)(&((CFG_MSG_CTES *)(CfgMsgFrame.Data))->ConsignaFrec),
+              (UINT8 *)(&(SYS_ConfigParam.ConsignaFrec)),
+              4*sizeof(float));  
+     	eeprom_read_buffer(EE_ADDR_VER_TEXT,
+     	                  (UINT8 *)(((CFG_MSG_CTES *)(CfgMsgFrame.Data))->UsrText), 30); 
+      CfgMsgFrame.Len = sizeof(CFG_MSG_CTES);    
+      break;    
+      
+ 
+    case CFG_TCP_READ_STAT:
+      IIC_RtcGetDateTime ();
+      (void)memcpy ((UINT8 *)(&(CfgMsgFrame.Data)),
+                    (UINT8 *)(&StatisticData),
+                     sizeof(STATISTIC_MSG));  
+      CfgMsgFrame.Len = sizeof(STATISTIC_MSG);      
+      break;    
+      
+
+    case CFG_TCP_READ_VER:
+      (void)memcpy ((UINT8 *)(&((CFG_MSG_VERSION *)(CfgMsgFrame.Data))->FW_VersionHdr), (UINT8*)(&FwVersionData), sizeof(CFG_FW_VERSION));  
+     	eeprom_read_buffer(EE_ADDR_VER_HWVER, 
+     	                  (UINT8 *)(&((CFG_MSG_VERSION *)(CfgMsgFrame.Data))->HW_Version),
+     	                   SIZE_HW_VER); 
+     	eeprom_read_buffer(EE_ADDR_VER_SERIAL,
+     	                  (UINT8 *)(&((CFG_MSG_VERSION *)(CfgMsgFrame.Data))->Serial),
+     	                   SIZE_SERIAL); 
+      CfgMsgFrame.Len = sizeof(CFG_MSG_VERSION);
+      break;    
+  
+
+    case CFG_TCP_WRITE_VER:
+      if ( (((CFG_MSG_VERSION *)(CfgMsgFrame.Data))->KeyCode) != VER_KEY_CODE) break; 
+              
+     	eeprom_write_buffer(EE_ADDR_VER_HWVER,
+     	                   (UINT8 *)(&((CFG_MSG_VERSION *)(CfgMsgFrame.Data))->HW_Version),
+     	                    SIZE_HW_VER); 
+    	eeprom_write_buffer(EE_ADDR_VER_SERIAL,
+     	                   (UINT8 *)(&((CFG_MSG_VERSION *)(CfgMsgFrame.Data))->Serial),
+     	                    SIZE_SERIAL); 
+      StatisticData.OsStat.MsgRstCntr = 0x00;
+      StatisticData.OsStat.MsgDogCntr = 0x00;
+      eeprom_write_buffer(EE_ADDR_DOG_CNTR, (UINT8 *)&(StatisticData.OsStat.MsgDogCntr), 2);     
+      eeprom_write_buffer(EE_ADDR_RST_CNTR, (UINT8 *)&(StatisticData.OsStat.MsgRstCntr), 2);     
+      CfgMsgFrame.Len = 0;
+      break; 
+      
+
+    case CFG_TCP_WRITE_CTES:
+      (void)memcpy ((UINT8 *)(&(SYS_ConfigParam.ConsignaFrec)),
+                    (UINT8 *)(&((CFG_MSG_CTES *)(CfgMsgFrame.Data))->ConsignaFrec),
+                    (4 * sizeof(float)));  
+          
+      eeprom_write_buffer(EE_ADDR_INV_FREC, (UINT8 *)&(SYS_ConfigParam.ConsignaFrec), 4); 
+      eeprom_write_buffer(EE_ADDR_PAR_RELTX, (UINT8 *)&SYS_ConfigParam.RelacionTx, 4); 
+      eeprom_write_buffer(EE_ADDR_PAR_CRESB, (UINT8 *)&SYS_ConfigParam.CoefResbal, 4); 
+      eeprom_write_buffer(EE_ADDR_PAR_RPMOT, (UINT8 *)&SYS_ConfigParam.RpmEnMotor, 4); 
+
+     	eeprom_write_buffer(EE_ADDR_VER_TEXT,
+     	                  (UINT8 *)(((CFG_MSG_CTES *)(CfgMsgFrame.Data))->UsrText), 30); 
+      CfgMsgFrame.Len = 0;
+      break;  
+
+
+    case CFG_TCP_WRITE_DATE:    
+      (void)memcpy ((UINT8 *)(&(StatisticData.CurrentDateTime.Second)),
+                    (UINT8 *)(&((DATE_TIME *)(CfgMsgFrame.Data))->Second),
+                    (sizeof(DATE_TIME)));  
+      IIC_RtcSetDateTime ();
+      CfgMsgFrame.Len = 0;
+      break;  
+              
+
+    case CFG_TCP_WRITE:
+      (void)memcpy ((UINT8 *)(&(CfgMsgInfo)),(UINT8 *)(&(CfgMsgFrame.Data)),
+                    (sizeof(CFG_MSG_INFO)));  
+      eeprom_write_buffer(EE_ADDR_INV_TYPE, &(CfgMsgInfo.InvCode), 1); 
+	    eeprom_write_buffer(EE_ADDR_IP_ADDR, CfgMsgInfo.TcpIP, 4);
+	    eeprom_write_buffer(EE_ADDR_IP_SUBNET, CfgMsgInfo.TcpMask, 4);
+	    eeprom_write_buffer(EE_ADDR_IP_GATEWAY, CfgMsgInfo.TcpGW, 4);
+	    eeprom_write_buffer(EE_ADDR_MAC, CfgMsgInfo.TcpMAC, 6);
+      eeprom_write_buffer(EE_ADDR_RUN_CFG, &(CfgMsgInfo.RunConfig), 1); 
+
+      eeprom_write_buffer(EE_ADDR_TCP_INITOUT, (UINT8 *)&(CfgMsgInfo.var_TCP_INIT_RETRY_TOUT), 2); 
+      eeprom_write_buffer(EE_ADDR_TCP_TOUT, (UINT8 *)&(CfgMsgInfo.var_TCP_DEF_RETRY_TOUT), 2); 
+      eeprom_write_buffer(EE_ADDR_TCP_RETRIES, &(CfgMsgInfo.var_TCP_DEF_RETRIES), 1);    
+      if (!CfgMsgInfo.var_TCP_DEF_RETRIES) CfgMsgInfo.var_TCP_DEF_RETRIES = 7;
+      if (!CfgMsgInfo.var_TCP_INIT_RETRY_TOUT) CfgMsgInfo.var_TCP_INIT_RETRY_TOUT = 100;
+      if (!CfgMsgInfo.var_TCP_DEF_RETRY_TOUT) CfgMsgInfo.var_TCP_DEF_RETRY_TOUT = 400;
+  
+			SYS_ConfigParam.ScanRate     = CfgMsgInfo.ScanRate;
+			SYS_ConfigParam.RunConfig    = CfgMsgInfo.RunConfig;
+     
+      eeprom_write_buffer(EE_ADDR_INV_POLL, (UINT8 *)&(CfgMsgInfo.ScanRate), 2); 
+      eeprom_write_buffer(EE_ADDR_SIE_CMDWA, (UINT8 *)&(CfgMsgInfo.SIE_CmdWordA), 2); 
+
+      (void)memcpy ((UINT8 *)(&(CfgMsgFrame.Data)),
+                    (UINT8 *)(&CfgMsgInfo),
+                     sizeof(CFG_MSG_INFO));        
+      CfgMsgFrame.Len = sizeof(CFG_MSG_INFO);
+      break;    
+
+    case CFG_TCP_GET_IOVALUES:
+      (void)memcpy ((UINT8 *)(&(CfgMsgFrame.Data[0])),
+              (UINT8 *)(&(InputOutputData)),
+              sizeof(GIO_STATE_VAL));  
+      CfgMsgFrame.Len = sizeof(GIO_STATE_VAL);    
+    
+      break;
+      
+    case CFG_TCP_SET_IOVALUES:
+      (void)memcpy ( (UINT8 *)(&(InputOutputData)),
+                     (UINT8 *)(&(CfgMsgFrame.Data[0])),              
+                      sizeof(GIO_STATE_VAL));  
+      GIO_SetOutVal ( ((GIO_STATE_VAL *)(&(CfgMsgFrame.Data[0])))->DigOutVal );
+      IIC_DacSetValues();
+      CfgMsgFrame.Len = sizeof(GIO_STATE_VAL);    
+    
+      break;
+
+  
+    case CFG_TCP_RESET:
+      __asm SEI;                         // Deshabilitar Interrupciones (RESET)
+      FOREVER;    
+      break;
+
+      
+    case CFG_TCP_POL:
+      CfgMsgFrame.OpCode = CFG_TCP_ACK;
+      CfgMsgFrame.Len = 0;
+      break;
+    
+
+    case CFG_TCP_WRITE_FLASH:
+      FLA_SaveReg (CfgMsgFrame.Parameter, CfgMsgFrame.Len, (UINT8*) &(CfgMsgFrame.Data));
+      CfgMsgFrame.Len = 0;
+      break;
+
+    case CFG_TCP_READ_FLASH:
+      FLA_ReadReg (CfgMsgFrame.Parameter, (UINT8)(CfgMsgFrame.AuxParam), (UINT8*) &(CfgMsgFrame.Data));
+      CfgMsgFrame.Len = (UINT8)(CfgMsgFrame.AuxParam);
+      break;
+      
+    case CFG_TCP_UPGRADE_FW:
+      TmpWriteByte = LDR_UPDATE_LOAD;
+      eeprom_write_buffer(EE_ADDR_FW_UPDATE, &TmpWriteByte, 1);     
+      __asm SEI;                         // Deshabilitar Interrupciones (RESET)
+      FOREVER;    
+      break;
+
+//  FW cargado ok, grabar bandera para informar al loader..
+    case CFG_TCP_VALIDATE_FW:
+      TmpWriteByte = LDR_UPDATE_VALID;
+      eeprom_write_buffer(EE_ADDR_FW_UPDATE, &TmpWriteByte, 1);     
+      CfgMsgFrame.Len = 0;
+      break;
+
+//  RECUPERAR EL FW DE FABRICA.. 
+    case CFG_TCP_RESTORE_FW:
+      TmpWriteByte = LDR_FACTORY_TEST;
+      eeprom_write_buffer(EE_ADDR_FW_UPDATE, &TmpWriteByte, 1);     
+      __asm SEI;                         // Deshabilitar Interrupciones (RESET)
+      FOREVER;    
+      break;
+      
+    default:
+      CfgMsgFrame.OpCode = CFG_TCP_NAK;
+      CfgMsgFrame.Len = 0;
+      break;  
+  }
+
+ 
+  CfgMsgFrame.RxWindow = CfgMsgFrame.TxWindow;
+  
+  if (TCP_SendCfgBuff()){				                    // Error en envio de respuesta
+	  (void)TMR_SetTimer ( TCP_TIMEOUT_SENDRETRY , PROC_CONFIG, 0x00, FALSE);	            // Reintentar
+  }
+//  TCP_SendCfgBuff();
+  return;
+   
+}
+
+
+
+///////////////////////////////////////////////////////////////////////////////
+// Funciones Auxiliares del Proceso
+///////////////////////////////////////////////////////////////////////////////
+//
+//-----------------------------------------------------------------------------
+// CFG_Init : inicializacion de variables del proceso
+//-----------------------------------------------------------------------------
+//
+void CFG_Init(void)
+{
+  
+  return;
+
+}
+
+
+#pragma CODE_SEG DEFAULT
+
+

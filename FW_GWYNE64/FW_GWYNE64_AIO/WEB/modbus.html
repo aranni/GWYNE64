@@ -1,0 +1,171 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+<meta name="generator" content="Web Page Maker V2">
+<style type="text/css">
+/*----------Text Styles----------*/
+.ws20 {font-size: 27px;}
+.wpmd {font-size: 13px;font-family: 'Arial';font-style: normal;font-weight: normal;}
+/*----------Para Styles----------*/
+DIV,UL,OL /* Left */
+{
+ margin-top: 0px;
+ margin-bottom: 0px;
+}
+</style>
+<style type="text/css">
+div#container
+{
+	position:relative;
+	width: 100%;
+	margin-top: 0px;
+	margin-left: auto;
+	margin-right: auto;
+	text-align:left; 
+}
+body {text-align:center;margin:0}
+</style>
+<style>
+.Item {
+   cursor: hand;
+   font-family: verdana; 
+   font-size: 20;
+   font-style: normal;
+   background-color: white;
+   color: black;
+ }
+.Highlight {
+   cursor: hand; 
+   font-family: verdana;
+   font-size: 20;
+   font-style: italic;
+   background-color: gray;
+   color: blue;
+ }
+ table {
+  border: gray 5px solid;
+}
+</style>
+
+<script type="text/javascript">
+function rollon(myid) {
+var el =document.getElementById(myid);
+	el.origColor=el.style.backgroundColor;
+	el.style.backgroundColor='#AACAEE';
+} 
+function rolloff(myid) {
+var el =document.getElementById(myid);
+	el.style.backgroundColor=el.origColor;
+} 
+
+
+function loadTags()
+{
+	documentoXML = importaXML("BAC_CONFIG.xml");
+	document.getElementById("TagPolFrec").value = documentoXML.getElementsByTagName("TagPolFrec")[0].firstChild.nodeValue;
+	document.getElementById("TagPolEnable").checked = Number(documentoXML.getElementsByTagName("TagPolEnable")[0].firstChild.nodeValue);
+	document.getElementById("TagResetList").checked = Number(documentoXML.getElementsByTagName("TagResetList")[0].firstChild.nodeValue);
+	document.getElementById("TagMirrorFrame").checked = Number(documentoXML.getElementsByTagName("TagMirrorFrame")[0].firstChild.nodeValue);
+	
+//	setTimeout("loadTags()", 1000); 	
+}
+
+
+function importaXML(archivo)
+{
+	var xmlDoc;
+	if (window.ActiveXObject) 	// code for IE
+	{
+		xmlDoc=new ActiveXObject("Microsoft.XMLDOM");
+		xmlDoc.async=false;
+		xmlDoc.load(archivo);
+	}
+	else		// mozxilla, chrome, zafari, opera
+	{
+		var xmlhttp = new window.XMLHttpRequest();
+		xmlhttp.open("GET",archivo,false);
+		xmlhttp.send(null);
+		xmlDoc = xmlhttp.responseXML.documentElement;	  
+	}
+	return(xmlDoc);
+}
+
+
+function addNewRow()
+{
+	documentoXML = importaXML("TCPSOCK_01.xml");
+	copyRow(documentoXML);
+	documentoXML = importaXML("TCPSOCK_02.xml");
+	copyRow(documentoXML);
+}
+
+function copyRow(xmlDoc) 
+{
+var TABLE = document.getElementById("BaseTable");
+var TROW = document.getElementById("BaseTrow");
+var content = TROW.getElementsByTagName("td");
+var x=xmlDoc.getElementsByTagName("GWY");
+var newRow = TABLE.insertRow(-1);
+newRow.className = TROW.attributes['class'].value;
+newRow.onmouseover = function()
+	{
+		this.origColor=this.style.backgroundColor;
+		this.style.backgroundColor='#AACAEE';
+	}
+newRow.onmouseout = function()
+	{
+		this.style.backgroundColor=this.origColor;
+	} 
+var newCell_1 = newRow.insertCell(newRow.cells.length);
+
+newCell_1.innerHTML = xmlDoc.getElementsByTagName("SKO1_STAT")[0].firstChild.nodeValue;
+//newCell_1.innerHTML = x[0].getElementsByTagName("SKO1_STAT")[0].childNodes[0].nodeValue;
+
+var newCell_2 = newRow.insertCell(newRow.cells.length);
+str = xmlDoc.getElementsByTagName("SKO1_IP_A")[0].firstChild.nodeValue;
+str += ".";
+str += xmlDoc.getElementsByTagName("SKO1_IP_B")[0].firstChild.nodeValue;
+str += ".";
+str += xmlDoc.getElementsByTagName("SKO1_IP_C")[0].firstChild.nodeValue;
+str += ".";
+str += xmlDoc.getElementsByTagName("SKO1_IP_D")[0].firstChild.nodeValue;
+newCell_2.innerHTML = str;
+
+var newCell_3 = newRow.insertCell(newRow.cells.length);
+newCell_3.innerHTML = xmlDoc.getElementsByTagName("SKO1_PORT")[0].firstChild.nodeValue;
+
+var newCell_4 = newRow.insertCell(newRow.cells.length);
+newCell_4.innerHTML = xmlDoc.getElementsByTagName("SKO1_MSG_RX")[0].firstChild.nodeValue;
+}
+</script>
+</head>
+<body onload=addNewRow()>
+<div id="container">
+<div id="shape1" style="position:absolute; overflow:hidden; left:0px; top:0px; width:100%; height:18px; z-index:1; background-color:#A8A8A8">&nbsp;</div>
+<div id="shape2" style="position:absolute; overflow:hidden; left:0px; top:82px; width:100%; height:18px; z-index:1; background-color:#A8A8A8">&nbsp;</div>
+<div id="shape3" style="position:absolute; overflow:hidden; text-align:right; left:0px; top:429px; width:100%; height:18px; z-index:1; background-color:#A8A8A8">&nbsp;<font color="#FFFFFF" face="Arial">© 2014 Ingenea S.R.L.</font></div>
+<div id="shape11" style="position:absolute; overflow:hidden; left:0px; top:19px; width:100%; height:62px; z-index:2; background-color:#1155AA">&nbsp;</div>
+<div id="text3" style="position:relative; overflow:hidden; top:30px; text-align:center; height:38px; z-index:3"><div class="wpmd">
+<div><font class="ws20" color="#FFFFFF" face="Tahoma">Gateway MODBUS TCP - MODBUS RTU</font></div>
+</div></div>
+<div id="table1" style="position:relative; overflow:hidden; width:100%; top:149px; height:207px; z-index:5"><div class="wpmd">
+<div><TABLE align="center" width="80%" id="BaseTable" class="Item" bgcolor="#FFFFFF" border=1 bordercolorlight="#C0C0C0" bordercolordark="#808080" >
+<TR valign=top id="BaseTrow" class="Items">
+<TD width="20%"><div class="Items">
+<div> ESTADO</div>
+</div></TD>
+<TD width="30%"><div class="Items">
+<div>&nbsp; IP del CLIENTE</div>
+</div></TD>
+<TD width="30%"><div class="Items">
+<div>&nbsp; PUERTO TCP</div>
+</div></TD>
+<TD width="20%"><div class="Items">
+<div>&nbsp; MSG RX</div>
+</div></TD>
+</TR></TABLE>
+</div></div></div>
+</div>
+</body>
+</html>

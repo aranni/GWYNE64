@@ -1,0 +1,490 @@
+##v##00.4.50
+pagenumber=17
+linenumber=770
+sellength=0
+topline=0
+EditHelpFileTitle.Text=Configuración de Gateway Multiprotocolo
+form2.STextForeHeadline.Color=16777215
+form2.STextForeText.Color=0
+form2.STextBackHeadline.Color=12845056
+form2.STextBackText.Color=14876671
+form2.STextHeadlineFont.Caption=Arial
+form2.STextTextFont.Caption=Arial
+form2.sTextFontSizeForHeadline.Caption=12
+form2.sTextFontSizeForText.Caption=10
+form2.CBoxBold.Checked=1
+form2.CBoxNoForeColor.Checked=0
+form2.CBoxLanguageID.ItemIndex=0
+form2.CBoxCharSet.ItemIndex=0
+form2.EditContents.Text=Contenidos
+form2.EditFrontpageName.Text=Página detallada de temas
+form2.CBoxDontMakeFrontpage.Checked=0
+form2.EditLogoPath.Text=Titulo.bmp
+form2.EditFrontpageButtonCaption.Text=Front page
+form2.RGroupHorizontalAlignment.ItemIndex=0
+form2.RGroupVerticalAlignment.ItemIndex=0
+form2.CBoxBlankLineBeforeEachHeading.Checked=1
+form2.CBoxMakeFrontPageButton.Checked=0
+form2.SpinEditFrontpageIDnumber.Value=9999
+form2.CBoxAddAboutMenu.Checked=0
+form2.EditAboutMenuCaption.Text=&About this help file...
+form2.CBoxPopupPagesForAboutMenu.Tag=-1
+form2.EditConstantNameFilePrefix.Text=pageConstants_
+form2.EditConstantNameFileExt.Text=txt
+form2.CBoxDontMakeHeadersKeywords.Checked=0
+form2.CBoxDontMakeTargetsKeywords.Checked=0
+copyToPath=
+form5.sTextColor1=0
+form5.sTextColor2=9743070
+form5.sTextColor3=12386403
+form5.sTextColor4=255
+form5.sTextColor5=8421376
+form5.sTextColor6=8650752
+form5.sTextColor7=33280
+form5.sTextColor8=32896
+form5.sTextColor9=13026246
+form5.sTextColor10=16711680
+form5.sTextColor11=65280
+form5.sTextColor12=8651007
+form5.sTextColor13=16777215
+form5.sTextColor14=16757429
+form5.sTextColor15=9764863
+form5.sTextColor16=8421504
+form5.sTextComment1=
+form5.sTextComment2=
+form5.sTextComment3=
+form5.sTextComment4=
+form5.sTextComment5=
+form5.sTextComment6=
+form5.sTextComment7=
+form5.sTextComment8=
+form5.sTextComment9=
+form5.sTextComment10=
+form5.sTextComment11=
+form5.sTextComment12=
+form5.sTextComment13=
+form5.sTextComment14=
+form5.sTextComment15=
+form5.sTextComment16=
+NumOfPages=20
+------------ end of project settings / page settings follow ------------
+pageC.pages[0].ImageIndex=-1
+pageTitle(0).Text=Acerca de GWY_Config
+getPageConstantLabel(0).Caption=AcercaDeGWY
+getPageContentHeaderLabel(0).Caption=
+pageKeywords(0).Text=
+pageC.pages[1].ImageIndex=-1
+pageTitle(1).Text=Inicio de la aplicación
+getPageConstantLabel(1).Caption=InicioDeLa
+getPageContentHeaderLabel(1).Caption=
+pageKeywords(1).Text=
+pageC.pages[2].ImageIndex=-1
+pageTitle(2).Text=Variantes de aplicaciones disponibles
+getPageConstantLabel(2).Caption=VariantesDe
+getPageContentHeaderLabel(2).Caption=
+pageKeywords(2).Text=
+pageC.pages[3].ImageIndex=-1
+pageTitle(3).Text=Información en la barra de estado
+getPageConstantLabel(3).Caption=InformacinEnLa
+getPageContentHeaderLabel(3).Caption=
+pageKeywords(3).Text=
+pageC.pages[4].ImageIndex=-1
+pageTitle(4).Text=Opciones en la Barra de Herramientas
+getPageConstantLabel(4).Caption=OpcionesEnLaBarra
+getPageContentHeaderLabel(4).Caption=
+pageKeywords(4).Text=
+pageC.pages[5].ImageIndex=-1
+pageTitle(5).Text=Configuraciones de la aplicación
+getPageConstantLabel(5).Caption=ConfiguracionesDe
+getPageContentHeaderLabel(5).Caption=
+pageKeywords(5).Text=
+pageC.pages[6].ImageIndex=-1
+pageTitle(6).Text=General
+getPageConstantLabel(6).Caption=General
+getPageContentHeaderLabel(6).Caption=
+pageKeywords(6).Text=
+pageC.pages[7].ImageIndex=-1
+pageTitle(7).Text=Puerto Ethernet
+getPageConstantLabel(7).Caption=PuertoEthernet
+getPageContentHeaderLabel(7).Caption=
+pageKeywords(7).Text=
+pageC.pages[8].ImageIndex=-1
+pageTitle(8).Text=Puertos Serie
+getPageConstantLabel(8).Caption=PuertosSerie
+getPageContentHeaderLabel(8).Caption=
+pageKeywords(8).Text=
+pageC.pages[9].ImageIndex=-1
+pageTitle(9).Text=Entradas / Salidas
+getPageConstantLabel(9).Caption=Entradas
+getPageContentHeaderLabel(9).Caption=
+pageKeywords(9).Text=
+pageC.pages[10].ImageIndex=-1
+pageTitle(10).Text=Parámetros
+getPageConstantLabel(10).Caption=Parmetros
+getPageContentHeaderLabel(10).Caption=
+pageKeywords(10).Text=
+pageC.pages[11].ImageIndex=-1
+pageTitle(11).Text=Servidor Web
+getPageConstantLabel(11).Caption=ServidorWeb
+getPageContentHeaderLabel(11).Caption=
+pageKeywords(11).Text=
+pageC.pages[12].ImageIndex=-1
+pageTitle(12).Text=Identifiación del Equipo
+getPageConstantLabel(12).Caption=IdentifiacinDel
+getPageContentHeaderLabel(12).Caption=
+pageKeywords(12).Text=
+pageC.pages[13].ImageIndex=-1
+pageTitle(13).Text=Actualizar FW
+getPageConstantLabel(13).Caption=ActualizarFW
+getPageContentHeaderLabel(13).Caption=
+pageKeywords(13).Text=
+pageC.pages[14].ImageIndex=-1
+pageTitle(14).Text=Estadísticas
+getPageConstantLabel(14).Caption=Estadsticas
+getPageContentHeaderLabel(14).Caption=
+pageKeywords(14).Text=
+pageC.pages[15].ImageIndex=-1
+pageTitle(15).Text=Variadores
+getPageConstantLabel(15).Caption=Variadores
+getPageContentHeaderLabel(15).Caption=
+pageKeywords(15).Text=
+pageC.pages[16].ImageIndex=-1
+pageTitle(16).Text=Gateway DNP3
+getPageConstantLabel(16).Caption=GatewayDNP3
+getPageContentHeaderLabel(16).Caption=
+pageKeywords(16).Text=
+pageC.pages[17].ImageIndex=-1
+pageTitle(17).Text=Problemas más comunues
+getPageConstantLabel(17).Caption=ProblemasMs
+getPageContentHeaderLabel(17).Caption=
+pageKeywords(17).Text=Problemas; inconvenientes
+pageC.pages[18].ImageIndex=0
+pageTitle(18).Text=FW_Campo_A
+getPageConstantLabel(18).Caption=FWCampoA
+getPageContentHeaderLabel(18).Caption=
+pageKeywords(18).Text=
+pageC.pages[19].ImageIndex=0
+pageTitle(19).Text=FW_Campo_B
+getPageConstantLabel(19).Caption=FWCampoB
+getPageContentHeaderLabel(19).Caption=
+pageKeywords(19).Text=
+pageC.pages[20].ImageIndex=0
+pageTitle(20).Text=FW_Campo_C
+getPageConstantLabel(20).Caption=FWCampoC
+getPageContentHeaderLabel(20).Caption=
+pageKeywords(20).Text=
+------------ end of page titles / full text of pages follow ------------
+----- SHM ---- page 0 ---- 
+
+La aplicación GWY_Config permite configurar los parámetros de funcionamiento del equipo conversor de protocolos IMP-ETH-100.  Las versiones de firmware, a partir de las cuales es posible utilizar esta aplicación para proceder a la configuración del equipo remoto, son aquellas que corresponden a alguna de las siguientes instancias:
+
+<onestep.bmp> <b>GWx-B-xxx.xxx.x  </b>
+<onestep.bmp> <b>GWx-C-xxx.xxx.x  </b>
+
+
+Donde las letras x minúsculas indican que el valor del caracter correspondiente a esa ubicación es indistinto
+----- SHM ---- page 1 ---- 
+
+Para iniciar la aplicación debe ejecutarse el archivo GWY_Config.exe. La aplicación no requiere de un proceso de instalación en la PC donde va a ejecutarse, simplemente deben copiarse los siguientes archivos en una carpeta del disco destino:
+
+<onestep.bmp> <b>GWY_Config.exe :</b> programa ejecutable
+
+<onestep.bmp> <b>GWY_Config.ini  :</b> archivo de inicialización de la aplicación.
+
+<onestep.bmp> <b>GWY_Config.hlp :</b> archivo con información de ayuda para el usuario.
+
+<onestep.bmp> <b>GWY_Config.cnt :</b> archivo con información de los temas de la ayuda.
+
+
+El programa creará una ventana con la interfaz de usuario que permite realizar todas las operaciones habilitadas, ya sea de modificación de los parámetros, transferencia de archivos o visualización de variables.
+Las opciones de conexión con el módulo remoto están disponibles en la <jump=SHM_contents0005>barra de herramientas</jump>, mientras que el acceso a las opciones de configuración propiamente dicha, se realiza desde la lista de secciones que está desplegada en la parte izquierda de la ventana. 
+----- SHM ---- page 2 ---- 
+
+El programa GWY_Config puede ser utilzado para configurar el Gateway multiprotocolo IMP-ETH-100 en cualquiera de sus aplicaciones disponibles. 
+Las aplicaciones que pueden configurarse con la actual versión del programa de configuración son las siguentes:
+
+ <bullet.bmp> <b>Gateway Multiprotocolo :</b> para variadores de velocidad Hitachi y Siemens, con destino común de las conversiones a Modbus TCP. ( Firmware GWY-C-xxx.xxx.x )
+
+ <bullet.bmp> <b>Gateway DNP3 :</b> para reconectadores Cooper, con protocolo de destino Modbus TCP. ( Firmware GWD-C-xxx.xxx.x )
+
+
+La selección del tipo de aplicación específca se realiza mediante la <jump=SHM_contents0006>configuración en el archivo GWY_Config.ini</jump>.
+
+----- SHM ---- page 3 ---- 
+
+La barra de estado, que está ubicada a lo ancho de la parte inferior de la ventana creada por la aplicación, presenta la siguiente apariencia:
+
+\par\ql\{bml BarraDeEstado.bmp\}\par\ql
+
+Es decir que está dividida en tres partes, donde se muesta permanentemente la siguiente información:
+- Estado de la conexión con el equipo remoto, CONECTADO ó DESCONECTADO.
+- Cantidad de mensajes enviados hacia el equipo, cuando hay conexión establecida.
+- Cantidad de mensajes recibidos desde el equipo.
+
+
+----- SHM ---- page 4 ---- 
+
+En parte superior de la ventana iniciada con la aplicación aparece un conjunto de botones de acceso directo y controles con la apariencia que se muestra a continuación:
+
+\par\ql\{bml BarraDeHerramientas.bmp\}\par\ql
+
+En la primera mitad aparece un cuadro de texto donde debe ingresarse la dirección IP del equipo que se pretende configurar.
+Luego hay cuatro botones de acceso rápido a las siguientes funciones:
+
+\{bml connect24_h.bmp\}   Iniciar el proceso de establecimiento de la conexión con el equipo remoto.
+
+\{bml disconnect24_h.bmp\}   Terminar la conexión cuando estuviera establecida.
+
+\{bml stop24_h.bmp\}   Enviar una orden de reset al módulo conectado.
+
+\{bml HELP.BMP\}   Abrir la ventana de ayuda, en el índice principal.
+
+
+
+
+
+
+
+----- SHM ---- page 5 ---- 
+
+Hay una serie de parametrizaciones propias del programa GWY_Config.exe, que permiten configurar algunas opciones. Cualquier ajuste de la configuración del programa se realiza en un archivo de texto anexo que tiene el mismo nombre que el ejecutable pero con extensión .ini.
+
+A continuación se enumeran las palabras claves y valores utilizados en el archivo GWY_Config.ini, junto con una descripción de las características que permiten configurar. EL formato adoptado es el estándar para este tipo de archivos. Por un lado se definen las secciones con los nombres encerrados entre corchetes, y por otro lado dentro de cada sección se escriben los pares de palabra clave=valor vinculados con un signo igual. 
+Las variables de configuración para cada sección son las siguientes:
+
+<chiclet.bmp> <b> [Settings]</b> : en esta sección se agrupan los parámetros de configuración propios de la comunicación con el equipo remoto.
+
+<bullet.bmp> <b>IPAddress : </b>dirección que aparecerá en el campo de IP actual, para establecer la conexión con el equipo remoto. Generalmente se asigna a este campo el valor 192.168.0.250,  puesto que es el número de IP con el que viene inicialmente configurado cada uno de los módulos. 
+
+<bullet.bmp> <b>Port : </b> puerto TCP que utiliza el programa de configuración para comunicarse con el equipo remoto. El valor que debe utilizarse es 5000, salvo que el módulo tenga cargada una versión especial de firmware y utilice un puerto diferente para transferir los mensajes de configuración.
+
+<bullet.bmp> <b>PollingFrec :  </b> intervalo de tiempo que se dejará transcurrir entre cada encuesta al módulo, cuando no se está requiriendo ninguna información específica. Es decir los mensajes de control que se intercambian mientras no haya mensajes de información pendientes de transmisión.
+
+<bullet.bmp> <b>ReadStatFrec : </b> período de tiempo entre cada encuesta cuando se están visualizando las variables estadísticas. Es decir que este valor determina la frecuencia de refresco de los valores correspondientes a las estadísticas.
+
+<bullet.bmp> <b>AdminCode : </b> código de acceso que permite conectarse con privilegios de administrador. Solo cuando este campo sea válido es posible realizar las operaciones de actualización de firmware y páginas web.
+
+<bullet.bmp> <b>Device :</b> código correspondiente al tipo de aplicación que se pretende configurar. Para la actual versión de software es posible utilizar los siguientes valores: <b>VAR</b> para configuración de gateway para variadores de velocidad, <b>DNP</b> para configurar el modo gateway DNP3 para reconectadores. En caso que no se pretenda desplegar ventanas de configuración para ninguna de las aplicaciones mencionadas debe dejarse este campo vacío, entonces el programa permitirá establecer solamente la configuración básica que es común a todas las aplicaciones.
+
+
+<chiclet.bmp> <b> [Tabs]</b> : aquí se configuran las ventanas que estarán disponibles según los distintos grupos de funcionalidades. Para cada caso, si se le asigna un valor igual a "1" a la clave correspondiente entonces quedará habilitada, en caso contrario ( generalmente se iguala a "0" ) no aparecerá en la lista de configuraciones posibles cuando se ejecute el programa. 
+
+<bullet.bmp> <b><jump=SHM_contents0007>TAB_GENERAL</jump> : </b> opciones generales, que no pertenece a ninguna característica particular.
+
+<bullet.bmp> <b><jump=SHM_contents0008>TAB_ETHERNET</jump> :</b> opciones de configuración del canal de comunicación ethernet.
+
+<bullet.bmp> <b><jump=SHM_contents0009>TAB_SERIE</jump> :</b> opciones de configuración para los puertos de comunicación serie.
+
+<bullet.bmp> <b><jump=SHM_contents0010>TAB_IO</jump> :</b> acceso a la visualización y modificación de los estados de los puertos de entrada / salida digitales y analógicos.
+
+<bullet.bmp> <b><jump=SHM_contents0011>TAB_PARAMETROS</jump> :</b> configuración de parámetros constantes, utilizados en la aplicación de variadores de velocidad principalmente.
+
+<bullet.bmp> <b><jump=SHM_contents0012>TAB_WEB</jump> :</b> opciones para la actualización de páginas web, alojadas en el equipo remoto.
+
+<bullet.bmp> <b><jump=SHM_contents0013>TAB_VERSIONES</jump> :</b> opciones de visualización de las versiones de firmware, hardware y número de serie.
+
+<bullet.bmp> <b><jump=SHM_contents0014>TAB_FIRMWARE</jump> :</b> opciones para la actualización de firmware.
+
+<bullet.bmp> <b><jump=SHM_contents0015>TAB_ESTADISTICAS</jump> :</b> opciones para la visualización de variables estadísticas.
+
+----- SHM ---- page 6 ---- 
+
+La página de configuración General presenta las siguientes opciones:
+
+<bullet.bmp><b> Habilitación del Reloj de Tiempo Real (RTC) :</b> tildando esta opción quedará habilitado el reloj interno del equipo, manteniendo los valores de fecha y hora aún en ausencia de tensión de alimentación. Cuando se pretende utilizar la información de registro de eventos es necesario que esta opción haya sido habilitada.
+
+<bullet.bmp><b> Habilitación de Modbus RTU :</b> esta opción permite habilitar un módulo de software que posibilita el acceso a los parámetros del variador de velocidad  a través del protocolo Modbus RTU. Es decir que puede conectarse cualquier dispositivo que utilice este protocolo para recuperar información del variador. La conexión del dispositivo Modbus RTU se realiza en el segundo puerto serie del equipo (puerto B), ya que el primero se lo utiliza para la comunicación con el variador de velocidad.
+
+<bullet.bmp><b> Sincronización de Fecha y Hora :</b> mediante el control correspondiente es posible actualizar los valores de fecha y hora del reloj de tiempo real. Cuando se presiona el botón mencionado se transmiten los datos del reloj de la PC donde está corriendo el programa GWY_Config, y se graban en el reloj del equipo remoto.
+
+----- SHM ---- page 7 ---- 
+
+La página de configuración del Puerto Ethernet presenta las siguientes opciones:
+
+<bullet.bmp><b> Dirección IP :</b> es la dirección IP que identifica al módulo dentro de la red. Cuando se pretenda modificar, debe ingresarse el nuevo valor y presionar el botón de grabar. En este caso hay que tener en cuenta que la acción tendrá efecto luego de resetear el equipo, de manera que la próxima conexión tiene que establecerse con la nueva dirección. 
+
+<bullet.bmp><b> Máscara de Red :</b> es la máscara de red IP que delimita la subred en la que se pretende agrupar los equipos. Al igual que el caso anterior también requiere de un reset para que la modificación sea efectiva.
+
+<bullet.bmp><b> Puerta de Enlace :</b> la puerta de enlace predeterminada, que puede ser requerida en caso que se implementen servicios de más alto nivel para redes IP. También aquí se toma el nuevo valor a partir del próximo reset.
+
+<bullet.bmp><b> Dirección Física :</b> La dirección física, también conocida como MAC address, es un número que identifica cada equipo unívocamente, y no puede ser modificado. Este campo se muestra solamente para poder consultar el valor asignado a cada equipo.
+
+<bullet.bmp><b> Cantidad de Reintentos :</b> Es la cantidad de veces que se reintentará la transmisión de un mensaje a través de la red IP, en caso de no recibir confirmación positiva.
+
+<bullet.bmp><b> Timeout del primer reintento :</b> Es el tiempo en segundos que se espera para reintentar el envío de mensajes, para el primer reintento.
+ 
+<bullet.bmp><b> Timeout otros reintentos :</b> Es el tiempo de espera, en segundos, para proceder con los siguientes reintentos luego del primero.
+----- SHM ---- page 8 ---- 
+
+La página de configuración de los puertos de Comunicación Serie presenta la siguiente opción:
+
+<bullet.bmp><b> Demora entre ciclos : </b> Es el tiempo, en milisegundos, de demora que se introduce luego del final de cada ciclo de encuestas, antes de comenzar el próximo.
+----- SHM ---- page 9 ---- 
+
+En el caso de los puertos de entrada / salida, analógicos y digitales, se dispone de una página dividida en tres partes que se detallan a continuación:
+
+<bullet.bmp><b> Entradas Analógicas : </b> En este primer cuadro aparecen los valores de ambas entradas analógicas. Al tratarse de entradas exclusivamente, los campos indicados no pueden modificarse.
+
+<bullet.bmp><b> Salidas Analógicas :</b> En el caso de las salidas analógicas, se dispone al principio de dos campos donde puede observarse el valor actual de cada puerto, y alineados con cada uno de estos campos se encuentran dos cuadros de texto donde pueden ingresarse los nuevos valores pretendidos para cada puerto. Es importante tener en cuenta que estos valores solo se transfieren al equipo remoto cuando se presiona el botón denominado "Modificar Salidas".
+
+<bullet.bmp><b> Entradas / Salidas Digitales :</b> En el último cuadro se encuentra una fila de tildes que representan el estado de cada una de las seis entradas/salidas digitales. Al igual que con las salidas analógicas, se dispone de la misma cantidad de tildes modificables alineados con cada entrada para proceder a la modificación de cada uno de los puertos. También aquí se procede efectivamente con la escritura recién cuando se presiona el botón antes mencionado.
+
+
+
+----- SHM ---- page 10 ---- 
+
+La página de configuración de Parámetros permite ingresar los valores de un conjunto de datos que parametrizan la aplicación. 
+
+Los primeros cuatro valores, son números que responden al formato de punto flotante y corresponden a los siguientes parámetros respectivamente; Consigna de Frecuencia del variador, Relación de Transmisión, Coeficiente de Resbalamiento y RPM en el motor. 
+Luego se muestra un campo de observaciones donde puede ingresarse cualquier texto de hasta 30 caracteres alfanuméricos, con cualquier comentario que pueda ser útil para hacer referencia a cada equipo.
+----- SHM ---- page 11 ---- 
+
+La disponibilidad del servidor web dependerá de la versión de Firmware cargada en el equipo, esta funcionalidad ha sido incorporada a partir de las versiones GWx-C-002.000.x . Es decir que el mecanismo de transferencia de páginas webs sólo puede ser utilizado si se encuentra instalado un firmware con versión 2.000 en adelante, independientemente de la aplicación implementada. 
+El diseño de las páginas web puede realizarse en cualquier PC utilizando un procesador de texto o algún programa más elaborado que simplifique la tarea. Luego deben transferirse todos los archivos necesarios para la visualización. Para llevar a cabo el proceso de transferencia de estos archivos hacia el equipo remoto, deben seguirse los siguientes pasos:
+
+<bullet.bmp><b> Apertura o creación de un archivo contenedor (.web) :</b> un conjunto de páginas web o sitio web, generalmente está constituido por un conjunto de archivos html, acompañado además de una serie de archivos gráficos. Todos estos archivos deben ser cargados previamente dentro de un archivo contenedor, que lleva la extensión .web.  Si ya existe un archivo de este tipo creado previamente, es posible ir a buscarlo accediendo al botón que contiene tres puntos suspensivos (...) en el cuadro de texto donde debe ingresarse el nombre del archivo, en caso que vaya a crearse uno nuevo hay que escribir el nombre completo, o proceder con el mecanismo de búsqueda (para ubicar la carpeta de destino) y luego finalizar escribiendo el nombre del archivo nuevo.
+
+<bullet.bmp><b> Incorporación de archivos al contenedor:</b> una vez que se encuentra seleccionado el archivo contenedor, se procede a la incorporación de cada uno de los archivos que constituyen la o las páginas webs diseñadas. Este proceso se realiza seleccionando el botón denominado "Agregar archivo" tantas veces como archivos contenga el proyecto. A medida que se ingresan archivos nuevos deben ir apareciendo, en la lista que se muestra a la derecha, los nombres de cada uno de ellos. También se observará el desplazamiento de una barra que indica el espacio utilizado por el conjunto de archivos incorporados, de manera que se puede apreciar la cantidad de memoria libre disponible.
+
+<bullet.bmp><b> Transferencia de archivos:</b> una vez que se han agregado todos los archivos al proyecto, se procede a transferir el conjunto en una sola operación. Esto se hace presionando el botón denominado "Transferir", una vez iniciada la transferencia se observa el desplazamiento de una segunda barra de progreso que indica dinámicamente el transcurso y finalización de la operación. 
+
+Al finalizar los tres pasos necesarios para actualizar el sitio web, inmediatamente quedará funcionando en el equipo remoto. De manera muy simple puede verificarse que la operación ha sido exitosa consultando con un navegador web las páginas que han sido transferidas al equipo, anteponiendo al nombre de la página la dirección IP del módulo en cuestión. 
+Es decir que por ejemplo, si se transfiere una página denominada info.html al módulo cuya dirección IP es 192.168.0.200, entonces habrá que escribir como dirección web para acceder a la página: http://192.168.0.200/info.html.
+
+----- SHM ---- page 12 ---- 
+
+La página de identificación del equipo es solamente de visualización. Es decir que no es posible modificar ninguno de los valores representados, que son los siguientes:
+
+<bullet.bmp><b> Versión de Firmware :</b> código completo de versión de firmware donde se identifica el tipo de aplicación, la versión de hardware sobre la que se ha desarrollado y probado, y las identificaciones de versión mayor, menor y revisión correspondientes. El significado de cada uno de los campos que conforman la codificación se detalla a continuación, a partir de un ejemplo de código:  
+
+	<pop=SHM_contents0019>GWY-C-</pop> <pop=SHM_contents0020>002.501</pop> <pop=SHM_contents0021>.F</pop> 
+                          
+
+<bullet.bmp><b> Fecha :</b> es la fecha de generación del archivo de firmware.
+
+<bullet.bmp><b> Hora : </b> la hora exacta en que fueron compilados los archivos fuentes.
+
+<bullet.bmp><b> Versión de Hardware :</b> código correspondiente a la versión de hardware del equipo. 
+
+<bullet.bmp><b> Número de Serie :</b> el número de serie de cada equipo, que además es un código que identifica el mes y el año en que ha sido fabricado.
+----- SHM ---- page 13 ---- 
+
+Es posible actualizar la versión de firmware del equipo, en forma remota a través de la misma red TCP utilizando el programa de configuración. El proceso de actualización consta de tres etapas, que deben cumplirse satisfactoriamente para dejar funcionando una nueva versión de firmware. 
+Para explicar luego el procedimiento, es necesario describir previamente el mecanismo de actualización. El procesador del equipo dispone de una memoria no volátil donde se escribe el programa que determina su funcionamiento. Pero además el dispositivo permite almacenar en una memoria no volátil adicional, entre otras cosas, dos versiones de firmware distintas de la que comienza a ejecutarse cuando se enciende el equipo.
+Una de estas versiones, que se carga en la memoria adicional, corresponde a lo que se denomina versión de fábrica o recuperación. Esta copia permanece disponible en una zona determinada de la memoria externa, para que pueda transferirse a la memoria del procesador en caso que se desee restablecer el funcionamiento según la versión original con la que salió el equipo luego de su fabricación.
+En la segunda zona disponible en la memoria adicional, pueden transferirse las nuevas versiones de firmware  para proceder luego con la actualización. Es decir que como paso previo a cualquier actualización de firmware debe transferirse a esta zona de memoria el archivo correspondiente. 
+Ahora que se ha explicado mejor el mecanismo, es posible enumerar los siguientes pasos para llevar a cabo una actualización de firmware:
+
+<bullet.bmp><b> Transferir el archivo con el nuevo firmware :</b> Debe seleccionarse el archivo que se pretende transferir, utilizando el botón con tres puntos (...) ubicado al final del cuadro de texto donde figura el nombre del archivo. Una vez que se ha cargado un archivo válido, debe aparecer la información correspondiente a la versión, fecha y hora de creación en los cuadros de texto sucesivos. Para proceder con la transferencia del archivo cargado debe presionarse el botón denominado "Transferir", ubicado debajo de la información mencionada. Al completar la transferencia es conveniente proceder a  la verificación de los datos enviados al equipo remoto, es decir, recibir la información que ya ha sido grabada en el destino y compararla con el archivo que aún está cargado en el programa local. Esto se realiza presionando el botón denominado "Verificar".
+
+<bullet.bmp><b> Actualizar la memoria del procesador con el archivo transferido :</b> Una vez transferido y verificado el archivo de firmware a la memoria adicional del equipo, es necesario proceder efectivamente con la actualización. Esto se realiza presionando el botón denominado "Actualizar ->" que se ubica a la izquierda de los cuadros donde se muestra la información del firmware cargado. También puede observase un botón denominado "Recuperar ->" que permite restablecer la versión de fábrica en la memoria del procesador. Estas dos opciones realizan un proceso similar dentro del equipo, es decir transferir alguna de las versiones de firmware alojadas en la memoria externa hacia la memoria del procesador.
+
+<bullet.bmp><b> Validar el funcionamiento del nuevo firmware :</b> Cuando se ha procedido con la actualización de la memoria del procesador, es necesario realizar una validación del funcionamiento. Inmediatamente luego de cargarse una versión el procesador se reinicia, perdiéndose momentáneamente la comunicación desde el programa GWY_Config. Al restablecerse la comunicación debe verificarse que la versión actual ahora debería ser la que se transfirió desde el archivo, y además tratar de verificar el funcionamiento correcto del sistema. Sólo entonces debe procederse con la validación del funcionamiento, esta operación permite registrar el nuevo firmware con carácter de permanente. Es decir que si no se valida el funcionamiento correcto y el equipo termina reiniciándose, automáticamente se restablecerá la versión de fábrica que se acepta como única versión estable para recuperación.
+
+
+----- SHM ---- page 14 ---- 
+
+La página de visualización de Estadísticas presenta la siguiente información:
+
+<bullet.bmp> <b>Tx OK :</b> Cantidad de mensajes transmitidos correctamente por el puerto serie, hacia el dispositivo conectado.
+
+<bullet.bmp> <b>Tx Err :</b> Cantidad de mensajes transmitidos infructuosamente por el puerto serie. Las causas de la falla pueden deberse a problemas internos en la transmisión de datos, o bien una incapacidad momentánea del equipo destinatario para procesar el mensaje recibido.
+
+<bullet.bmp> <b>Tx OK :</b> Cantidad de mensajes recibidos correctamente por el puerto serie, desde el dispositivo conectado.
+
+<bullet.bmp> <b>Tx OK :</b> Cantidad de mensajes recibidos con error o perdidos. Puede ser debido a una falla de consistencia en el mensaje recibido, o directamente a la pérdida del mensaje y consecuentemente el vencimiento del tiempo de espera.
+----- SHM ---- page 15 ---- 
+
+La página de variadores, permite seleccionar el modelo de variador de velocidad que se conectará al puerto serie correspondiente.  Esta opción aparecerá solamente cuando se configure el modo de la aplicación en el archivo <jump=SHM_contents0006>GWY_Config.ini </jump> para que el programa permita acceder a las opciones específicas de configuración del gateway para variadores.
+
+Una vez seleccionado el modelo correcto, debe procederse a grabar la modificación y resetear el equipo para que comience a funcionar con la nueva configuración.
+----- SHM ---- page 16 ---- 
+
+La página de configuración DNP3, permite modificar las direcciones de maestro y esclavo asignadas para la comunicación entre el módulo y el reconectador.  Esta opción aparecerá solamente cuando se configure el modo de la aplicación en el archivo <jump=SHM_contents0006>GWY_Config.ini </jump> para que el programa permita acceder a las opciones específicas de configuración del gateway DNP3 para reconectadores.
+
+En cada uno de los cuadros de texto correspondientes debe ingresarse el valor de dirección determinado y grabar las modificaciones. Estos valores comenzarán a utilizarse efectivamente luego de resetear el equipo conversor de protocolos.
+----- SHM ---- page 17 ---- 
+
+<boxl><b>No puede establecerse la conexión </b>
+</box>
+Cuando no es posible establecer la conexión con el módulo remoto, deben verificarse la siguiente secuencia de pasos:
+
+<onestep.bmp> <b>Módulo remoto encendido :</b> verificar que el módulo de hardware se encuentre encendido.
+<onestep.bmp> <b>Cable de red :</b>  verificar el cableado de la red, particularmente el cable que conecta la PC al switch correspondiente, así como también la conexión entre el módulo remoto y el equipo de transmisión inalámbrico.
+<onestep.bmp> <b>Numero de IP : </b> verificar que el número de IP asignada a la PC donde se encuentra instalado el programa GWY_Config pertenece a la misma subred que el equipo remoto.
+<onestep.bmp> <b>Mascara de red :</b> verificar la división de redes definida por las máscaras de subred, tanto en la PC como en el módulo de hardware.
+
+
+<boxl><b>No aparecen las opciones de selección de modelo de vairador</b>
+</box>
+En caso que no pueda encontrarse esta opción en la lista ubicada del lado izquierdo de la ventana de configuración, verificar que el archivo GWY_Config.ini está inicializado para que la aplicación funcione con las opciones de Gateway para variadores.
+
+----- SHM ---- page 18 ---- 
+Las primeras tres letras del código identifican el tipo de aplicación 
+que implementa el archivo de Firmware. 
+El programa de configuración GWY_Config permite administrar las 
+aplicaciones que comienzan con los siguientes códigos:
+
+<b>GWY : </b>gateway multiprotocolo para variadores de velocidad.
+
+<b>GWD:</b> gateway DNP3 <->ModbusTCP para reconectadores.
+
+La letra que continúa, delimitada por guiones ( -C- ), corresponde a
+la versión de hardware que ha sido utilizada para el desarrollo y pruebas
+del archivo de firmware. 
+Esto no significa que sea la única versión sobre la cual pueda instalarse. 
+Cada archivo de firmware tiene información en un encabezado interno, 
+donde se indica entre otras cosas, la compatibilidad hacia atrás que 
+admite, es decir hasta cuál de las versiones anteriores de hardware 
+puede utilizarse.
+----- SHM ---- page 19 ---- 
+El segundo campo identifica la versión de FW propiamente dicha.
+
+Los primeros tres dígitos identifican el número de <b>Versión Mayor</b> (*),
+el cual se modifica sólo cuando se introducen cambios significativos. 
+
+Los tres últimos dígitos representan las siguientes características:
+
+<b> - Versión Menor:</b> Es incrementado cuando se realizan cambios
+                             en un único subsistema, o poco significativos.
+
+<b> - Revisión:</b> Se incrementa con cada revisión de código, o 
+                    corrección de bugs. La acumulación de revisiones
+                    desencadenará luego una nueva versión menor. 
+
+<b> - Instancia:</b>  Durante el desarrollo de correcciones o nuevas 
+                     funcionalidades se debe transcurrir por varias 
+                     instancias de prueba. Las instancias representadas
+                     por dígitos pares corresponden a versiones estables,
+                     mientras que cuando se utiliza un dígito impar la 
+                     instancia correspondiente se genera solamente para
+                     prueba. Finalmente las versiones entregadas para su 
+                     utilización definitiva deben tener el dígito de instancia
+                     igual a cero ( 0 ).
+
+
+* El primer dígito de la versión mayor puede ser reemplazado por un
+  caracter alfanumérico. Esto se realiza en caso que puedan existir
+  variantes de implementación para una misma versión.
+----- SHM ---- page 20 ---- 
+
+El último campo, identificado por el último caracter del código,
+representa el tipo de firmware generado, el cual puede ser :
+
+<b>- F ( FREE) :</b> Codigo liberado, para utilización definitiva.
+
+<b>- D ( DEBUG ) :</b> Código generado con símbolos de debug,
+                        para depurar alguna falla reportada.
+
+<b>- T ( TEST ) :</b> Código generado especialmente para realizar
+                     pruebas de funcionamiento exhaustivas sobre
+                     alguno de los subsistemas.
+
+<b>- R ( RECOVERY ) :</b> Firmware de recuperación, generado 
+                              para ser transferido a la zona de memoria
+                              destinada a alojar este tipo de versiones.
+                              La transferencia de estas versiones sólo se
+                              realiza en el momento de la fabricación.
+
+                               
+                               

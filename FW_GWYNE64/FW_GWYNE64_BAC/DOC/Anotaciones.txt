@@ -1,0 +1,98 @@
+http://172.30.36.52/logs.html
+http://172.30.36.52/logs.xml?LogReadNext=11	// para resetear punteros de logs.
+--------------------------------------------
+
+Metrovías:
+
+Configuración conversores:
+	
+Lacroze  	172.30.36.52	 255.255.255      172.30.36.1		A-000069.NOV.06
+Los Incas       172.30.36.60     255.255.255      172.30.36.1		B-000057.MAR.09
+Medrano         172.30.36.64     255.255.255      172.30.36.1		B-000062.MAR.09
+Pellegrini      172.30.36.66     255.255.255      172.30.36.1		B-000063.MAR.09
+Alternativa     172.30.36.68     255.255.255      172.30.36.1		B-000059.MAR.09
+
+Todos con versión:
+2010-08-04: GWH-C-002.075.D (Aug 04 2010 - 12:23:44)  >>>>> Es revisión 4  del trunk svn  !!!!
+2011-05-02: GWH-C-002.081.D (May 02 2011 - 13:18:06)	
+
+--------------------------------------------
+
+IP del conversor en Lacroze:  172.30.36.52
+
+Acceso por Cisco VPN Client:
+
+Usuario:  Remote_Access
+Psw:      Metro01Vias02
+
+Usuario:  senales
+Psw:      vpn@1357
+
+
+FTP Server:
+
+Usuario:devel
+Psw: 	conversores
+
+
+Configuracion VPN Client:
+
+Connection Entry: Metrovias
+Host: 190.12.115.14
+
+
+--------------------------------------------
+
+IP de la PC en Lacroze:  172.30.36.53
+
+Acceso por DameWare:
+
+usr: laboratorio
+psw: LABOSEC
+
+--------------------------------------------
+
+Estadisticas: (2010-05-14)
+
+- FW Ver: GWH-C-002.067.D
+- FW Date: Dec 29 2009 - 11:54:37
+- HW Ver : GWY-C-001.09.06
+- Serial: A-000069.NOV.06
+- MAC Addr: 00-12-02-56-54-44
+- Demora entre polling = 80 mseg
+- Redireccionamiento por SCIB = activo
+- Temp = 38.379 ºC
+
+TxOK  = 314232
+TxErr = 0
+RxOK  = 314073 = 99.95 %
+RxErr = 162    = 0.05 % 
+
+Cx Reinit =   1
+RST CxErr = 719
+EvtQMax   =   3
+RST WD_COP= 307
+
+--------------------------------------------
+
+--------------------------------------------
+
+Estadisticas: (2011-05-02) - Pellegrini
+
+TxOK  = 9246405
+TxErr = 0
+RxOK  = 9241503 = 99.95 %
+RxErr = 4966    = 0.05 % 
+
+Cx Reinit =    4
+RST CxErr = 3969
+EvtQMax   =    3
+RST WD_COP=   35
+
+--------------------------------------------
+
+
+172.30.36.60
+255.255.255.0
+172.30.36.1
+00-12-45-56-78-39

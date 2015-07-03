@@ -1,0 +1,7 @@
+Record=SheetSymbol|SourceDocument=Gateway.SCHDOC|Designator=GPIO|SchDesignator=GPIO|FileName=GPIO.SchDoc
+Record=SheetSymbol|SourceDocument=Gateway.SCHDOC|Designator=IIC|SchDesignator=IIC|FileName=IIC.SCHDOC
+Record=SheetSymbol|SourceDocument=Gateway.SCHDOC|Designator=MAIN|SchDesignator=MAIN|FileName=MainProc.SchDoc
+Record=SheetSymbol|SourceDocument=Gateway.SCHDOC|Designator=POWER|SchDesignator=POWER|FileName=POWER.SchDoc
+Record=SheetSymbol|SourceDocument=Gateway.SCHDOC|Designator=SPI|SchDesignator=SPI|FileName=SPI.SchDoc
+Record=SheetSymbol|SourceDocument=Gateway.SCHDOC|Designator=UART|SchDesignator=UART|FileName=UART.SchDoc
+Record=TopLevelDocument|FileName=Gateway.SCHDOC

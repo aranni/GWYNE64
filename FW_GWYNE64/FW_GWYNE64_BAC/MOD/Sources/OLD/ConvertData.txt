@@ -1,0 +1,72 @@
+//====================================================================
+// Convierte número Hexa de dos digitos ( en caracteres ascii ) a BYTE
+//====================================================================
+UINT8 HexToByte (INT8 * pSourceHexByte)
+{
+  UINT8 TargetByte, TargetTmp;
+  
+  TargetTmp = (*pSourceHexByte);  
+  if ( TargetTmp > '9'){
+    TargetTmp -= 'A';
+    TargetTmp += 10;
+  }
+  else  TargetTmp -=  '0';
+    
+  TargetByte = TargetTmp * 16; 
+  pSourceHexByte++;
+  
+  TargetTmp = (*pSourceHexByte);  
+  if ( TargetTmp > '9'){
+    TargetTmp -= 'A';
+    TargetTmp += 10;
+  }
+  else  TargetTmp -=  '0';
+  
+  TargetByte += TargetTmp; 
+  return TargetByte;
+  
+}
+
+//====================================================================
+// Convierte número Hexa de 4 digitos ( en caracteres ascii ) a WORD
+//====================================================================
+UINT16 HexToWord (INT8 * pSourceHexWord) 
+{
+  UINT16 TargetWord, TargetWordTmp;
+  
+  TargetWord = (UINT16) HexToByte ( pSourceHexWord); 
+  pSourceHexWord++;
+  TargetWordTmp = (UINT16) HexToByte ( pSourceHexWord);
+  TargetWordTmp <= 8;
+  TargetWord |= TargetWordTmp;
+  
+  return TargetWord;    
+  
+}
+
+
+//====================================================================
+// Convierte BYTE a número Hexa de dos digitos ( en caracteres ascii )
+//====================================================================
+INT8 HexaTable[16]={ '0','1','2','3','4','5','6','7','8','9',
+                      'A','B','C','D','E','F' };
+
+//====================================================================
+void ByteToHex (INT8 * pTargetHex, UINT8 SourceByte)
+{
+  *pTargetHex= HexaTable[SourceByte / 16];
+  pTargetHex++;
+  *pTargetHex= HexaTable[SourceByte % 16];
+}
+
+
+//====================================================================
+// Convierte WORD a número Hexa de 4 digitos ( en caracteres ascii )
+//====================================================================
+void WordToHex(INT8 * pTargetWordHex, UINT16 SourceWord)
+{
+  ByteToHex(pTargetWordHex, (UINT8)(SourceWord / 256));
+  ByteToHex(pTargetWordHex+2, SourceWord % 256);
+}
+
+

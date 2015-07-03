@@ -1,0 +1,286 @@
+<html> 
+<head> 
+<title>Compresor de código HTML</title> 
+<!--
+This file retrieved from the JS-Examples archives
+http://www.js-examples.com
+100s of free ready to use scripts, tutorials, forums.
+Author: BrainJar - http://www.brainjar.com/ 
+--> 
+<p align="center"><b>Compresor de código HTML
+<style type="text/css"> 
+A {	TEXT-DECORATION: none}
+BODY {	FONT-SIZE: 10pt; MARGIN: 24px; 	font-family: Verdana,Narkisim,Peterburg; }
+H2 {	FONT-SIZE: 140%}
+H3 {	FONT-SIZE: 120%}
+H4 {	FONT-SIZE: 100%}
+PRE {	FONT-SIZE: 80%; FONT-FAMILY:  monospace}
+TD {	FONT-SIZE: 10pt; VERTICAL-ALIGN: top; FONT-FAMILY: Verdana,Arial, Helvetica, sans-serif; TEXT-ALIGN: left}
+TH {	FONT-WEIGHT: bold; FONT-SIZE: 10pt; VERTICAL-ALIGN: bottom;  TEXT-ALIGN: left}
+UL {	LIST-STYLE-TYPE: square}
+#demoBox {	BORDER-RIGHT: #000000 1px solid; PADDING-RIGHT: 8px; BORDER-TOP: #000000 1px solid; PADDING-LEFT: 8px; PADDING-BOTTOM: 8px; BORDER-LEFT: #000000 1px solid; WIDTH: 24em; PADDING-TOP: 8px; BORDER-BOTTOM: #000000 1px solid}
+.footer {	MARGIN-BOTTOM: 0px; TEXT-ALIGN: center}
+TABLE.boxed {	border-spacing: 2px}
+TD.boxed {	BORDER-RIGHT: #000000 1px solid; PADDING-RIGHT: 8px; BORDER-TOP: #000000 1px solid; PADDING-LEFT: 8px; PADDING-BOTTOM: 2px; BORDER-LEFT: #000000 1px solid; COLOR: #000000; PADDING-TOP: 2px; BORDER-BOTTOM: #000000 1px solid; BACKGROUND-COLOR: #ffffff}
+TH.boxed {	BORDER-RIGHT: #000000 1px solid; PADDING-RIGHT: 8px; BORDER-TOP: #000000 1px solid; PADDING-LEFT: 8px; PADDING-BOTTOM: 2px; BORDER-LEFT: #000000 1px solid; COLOR: #000000; PADDING-TOP: 2px; BORDER-BOTTOM: #000000 1px solid; BACKGROUND-COLOR: #c0c0c0}
+TH.boxedHeader {	BORDER-RIGHT: #000000 1px solid; PADDING-RIGHT: 8px; BORDER-TOP: #000000 1px solid; PADDING-LEFT: 8px; PADDING-BOTTOM: 2px; BORDER-LEFT: #000000 1px solid; COLOR: #ffffff; PADDING-TOP: 2px; BORDER-BOTTOM: #000000 1px solid; BACKGROUND-COLOR: #808080}
+INPUT.text {	BORDER-TOP-WIDTH: 2px; PADDING-RIGHT: 2px; PADDING-LEFT: 2px; BORDER-LEFT-WIDTH: 2px; BORDER-LEFT-COLOR: #00d0d0; BORDER-BOTTOM-WIDTH: 2px; BORDER-BOTTOM-COLOR: #00d0d0; PADDING-BOTTOM: 2px; BORDER-TOP-COLOR: #00d0d0; PADDING-TOP: 2px; SCROLLBAR-BASE-COLOR: #00d0d0; BACKGROUND-COLOR: red; BORDER-RIGHT-WIDTH: 2px; BORDER-RIGHT-COLOR: #aad0d0}
+TEXTAREA {	BORDER-TOP-WIDTH: 2px; PADDING-RIGHT: 2px; PADDING-LEFT: 2px; BORDER-LEFT-WIDTH: 2px; BORDER-LEFT-COLOR: #00d0d0; BORDER-BOTTOM-WIDTH: 2px; BORDER-BOTTOM-COLOR: #00d0d0; PADDING-BOTTOM: 2px; BORDER-TOP-COLOR: #00d0d0; PADDING-TOP: 2px; SCROLLBAR-BASE-COLOR: #00d0d0; BACKGROUND-COLOR: green; BORDER-RIGHT-WIDTH: 2px; BORDER-RIGHT-COLOR: #aad0d0}
+INPUT.button {	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; FONT-WEIGHT: bold; FONT-SIZE: 10pt; BORDER-LEFT-COLOR: #00d0d0; BORDER-BOTTOM-COLOR: #00d0d0; PADDING-BOTTOM: 0px; WIDTH: 5em; BORDER-TOP-COLOR: #00d0d0; PADDING-TOP: 0px;  BACKGROUND-COLOR: aqua; BORDER-RIGHT-COLOR: blue}
+TABLE {	BORDER-RIGHT: 2px outset; PADDING-RIGHT: 4px; BORDER-TOP: 2px outset; PADDING-LEFT: 4px; PADDING-BOTTOM: 4px; BORDER-LEFT: 2px outset; PADDING-TOP: 4px; BORDER-BOTTOM: 2px outset; BACKGROUND-COLOR: yellow}
+TD {	FONT-SIZE: 10pt; }
+TH {	FONT-SIZE: 10pt; }
+TH {	BORDER-RIGHT: #000000 1px solid; PADDING-RIGHT: 8px; BORDER-TOP: #000000 1px solid; PADDING-LEFT: 8px; BORDER-LEFT: #000000 1px solid; WIDTH: auto; COLOR: #ffffff; BORDER-BOTTOM: #000000 1px solid; BACKGROUND-COLOR: #008080; TEXT-ALIGN: left}
+</style> 
+<script type="text/javascript"> 
+ 
+var literalStrings;  // For temporary storage of literal strings.
+
+String.prototype.toBase=function(base) { 
+    for(var i=0, dev=""; i<this.length; i++) 
+        dev+= "0x"+this.charCodeAt(i).toString(base)+", "; 
+    return dev; 
+}  
+
+String.prototype.toChar=function(fromBase) { 
+    //iremos cogiendo cada número, convirtiéndolo a base decimal y hallando la letra que corresponde ese número 
+    //no sabemos qué delimita un número en ninguna base si están escritos sin espacios, pero sabemos que en base 10 el número ha de estar entre 65(A) y 122(z) (incluiremos algunos símbolos pero a efectos nos da igual) 
+    var dev="";    //guardaremos aquí las letras a devolver 
+    var posIni=0, posFin=1;        //posIni y posFin delimitarán el número en this 
+    //iremos aumentando posFin hasta que el número, convertido a base 10, esté entre 65 y 122 
+    while(posFin<=this.length) {        //iremos extrayendo numeros mientas posFin no llegue al final de this 
+        var convertido=this.substring(posIni,posFin);                //convertido: parte de this a estudiar 
+        convertido= parseInt( convertido, fromBase );                //la pasamos a base 10 
+        while( Number(convertido)<65 || Number(convertido)>122 ) {        //mientras no sea una letra 
+            posFin++;                                                        //aumentamos posFin 
+            convertido= this.substring(posIni,posFin);                        //rehacemos convertido para volver a estudiarlo 
+            convertido= parseInt( convertido, fromBase ); 
+        } 
+        //en este punto convertido es un número en base 10 que representa una letra 
+        //convertiremos ese número a su respectivo caracter, y lo añadiremos a la cadena a devolver 
+        dev+=String.fromCharCode(convertido); 
+        //posIni pasará a ser posFin, y posFin será posFin+1 para buscar más números en la cadena this 
+        posIni=posFin; posFin++; 
+    } 
+    //en este punto dev contendrá todos los caracteres a devolver 
+    return dev; 
+}  
+
+//var cadena="abc";
+//var base=16; 
+//var laConvertida=cadena.toBase(base); 
+//document.write( "Resultado Hexa: <b>"+laConvertida+"</b>");  
+ 
+function crunch(f) {
+ 
+  var input, output, outputHex;
+  var i;
+ 
+  // Get input script code, process it and display output.
+ 
+  f.elements.codeOut.value = "";
+  f.elements.statusMsg.value = "Working...";
+  input = f.elements.codeIn.value;
+  output = input;
+  f.elements.statusMsg.value = "Replacing literal strings...";
+  output = replaceLiteralStrings(output);
+  f.elements.statusMsg.value = "Removing comments...";
+  output = removeComments(output);
+  f.elements.statusMsg.value = "Compressing white space...";
+  output = compressWhiteSpace(output);
+  f.elements.statusMsg.value = "Restoring literal strings...";
+  output = restoreLiteralStrings(output);
+  f.elements.statusMsg.value = "Combining literal strings...";
+  output = combineLiteralStrings(output);
+  f.elements.statusMsg.value = "Done.";
+
+  f.elements.codeOut.value = output;
+  
+//  for(var i=0, outputHex=""; i<output.length; i++) 
+//      outputHex+= "0x"+output.charCodeAt(i).toString(16)+", "; 
+//  document.write(outputHex);    
+	
+  // Compute sizes.
+  f.elements.sizeIn.value   = input.length;
+  f.elements.sizeOut.value  = output.length;
+  f.elements.sizeDiff.value = input.length - output.length;
+  if (input.length > 0)
+    f.elements.pctOut.value = 100 -
+      Math.round(output.length / input.length * 10000) / 100;
+ 
+  return false;
+}
+ 
+function replaceLiteralStrings(s) {
+ 
+  var i, c, t, lines, escaped, quoteChar, inQuote, literal;
+ 
+//  literalStrings = new Array(s.length);    // Preallocate some memory.
+  literalStrings = new Array();
+  t = "";
+ 
+  // Split script into individual lines.
+ 
+  lines = s.split("\n");
+  for (i = 0; i < lines.length; i++) {
+ 
+    j = 0;
+    inQuote = false;
+    while (j <= lines[i].length) {
+      c = lines[i].charAt(j);
+ 
+      // If not already in a string, look for the start of one.
+ 
+      if (!inQuote) {
+        if (c == '"' || c == "'") {
+          inQuote = true;
+          escaped = false;
+          quoteChar = c;
+          literal = c;
+        }
+       else
+         t += c;
+      }
+ 
+      // Already in a string, look for end and copy characters.
+ 
+      else {
+        if (c == quoteChar && !escaped) {
+          inQuote = false;
+          literal += quoteChar;
+          t += "__" + literalStrings.length + "__";
+          literalStrings[literalStrings.length] = literal;
+        }
+        else if (c == "\\")
+          escaped = true;
+        else
+          escaped = false;
+        literal += c;
+      }
+      j++;
+    }
+    t += "\n";
+  }
+ 
+  return t;
+}
+ 
+function removeComments(s) {
+ 
+  var lines, i, t;
+ 
+  // Remove '//' comments from each line.
+ 
+  lines = s.split("\n");
+  t = "";
+  for (i = 0; i < lines.length; i++)
+    t += lines[i].replace(/(.*)\/\/.*$/g, "$1");
+ 
+  // Replace newline characters with spaces.
+ 
+  t = t.replace(/(.*)\n(.*)/g, "$1 $2");
+ 
+  // Remove '/* ... */' comments.
+ 
+  t = t.replace(/(.*)\x2f\x2a(.*|\n)\x2a\x2f(.*)/g, "$1 $3");
+ 
+  return t;
+}
+ 
+function compressWhiteSpace(s) {
+ 
+  // Condense white space.
+ 
+  s = s.replace(/\s+/g, " ");
+  s = s.replace(/^\s(.*)/, "$1");
+  s = s.replace(/(.*)\s$/, "$1");
+ 
+  // Remove uneccessary white space around operators, braces and parentices.
+ 
+  s = s.replace(/\s([\x21\x25\x26\x28\x29\x2a\x2b\x2c\x2d\x2f\x3a\x3b\x3c\x3d\x3e\x3f\x5b\x5d\x5c\x7b\x7c\x7d\x7e])/g, "$1");
+  s = s.replace(/([\x21\x25\x26\x28\x29\x2a\x2b\x2c\x2d\x2f\x3a\x3b\x3c\x3d\x3e\x3f\x5b\x5d\x5c\x7b\x7c\x7d\x7e])\s/g, "$1");
+  return s;
+}
+ 
+function restoreLiteralStrings(s) {
+ 
+  var i;
+ 
+  for (i = 0; i < literalStrings.length; i++)
+    s = s.replace(new RegExp("__" + i + "__"), literalStrings[i]);
+ 
+  return s;
+}
+ 
+function combineLiteralStrings(s) {
+ 
+  var i;
+ 
+  s = s.replace(/"\+"/g, "");
+  s = s.replace(/'\+'/g, "");
+ 
+  return s;
+}
+
+</script> 
+</head> 
+ 
+</font></b> 
+ 
+<body> 
+ 
+</p> 
+ 
+<form onsubmit="return crunch(this)"> 
+  <p></p> 
+  <table border="0" width="672" style="border-collapse: collapse; background-color: #FFFFFF" bordercolor="#111111" cellpadding="0" cellspacing="0"> 
+    <tr> 
+      <th colSpan="3" width="652">Código fuente sin comprimir</th> 
+    </tr> 
+    <tr> 
+      <td colSpan="3" width="660"> 
+      <textarea name="codeIn" rows="7" cols="80" style="color: #000000; background-color: #FFFFFF"></textarea></td> 
+    </tr> 
+    <tr> 
+      <td width="167"><b>Bytes:</b> 
+      <input class="text" disabled size="10" name="sizeIn" style="color: #000000; background-color: #FFFFFF"></td> 
+      <td width="311"><b>Status:</b> 
+      <input class="text" disabled size="30" name="statusMsg" style="color: #000000; background-color: #FFFFFF"></td> 
+      <td style="TEXT-ALIGN: right" width="166"> 
+      <input class="button" type="submit" value="Comprime"> 
+      <input class="button" type="reset" value="Borrar"></td> 
+    </tr> 
+  </table> 
+  <p></p> 
+  <p></p> 
+  <table border="0" style="border-collapse: collapse; background-color: #FFFFFF" bordercolor="#111111" cellpadding="0" cellspacing="0" width="672"> 
+    <tr> 
+      <th colSpan="4" width="652">Código fuente comprimido</th> 
+    </tr> 
+    <tr> 
+      <td colSpan="4" width="660"> 
+      <textarea name="codeOut" rows="7" cols="80" style="color: #000000; background-color: #FFFFFF"></textarea></td> 
+    </tr> 
+    <tr> 
+      <td width="174"><b>Bytes:</b> 
+      <input class="text" disabled size="10" name="sizeOut" style="color: #000000; background-color: #FFFFFF"></td> 
+      <td width="174"><b>Ahorro:</b> 
+      <input class="text" disabled size="10" name="sizeDiff" style="color: #000000; background-color: #FFFFFF"></td> 
+      <td width="215"><b>% Ahorro:</b> 
+      <input class="text" disabled size="10" name="pctOut" style="color: #000000; background-color: #FFFFFF"></td> 
+      <td style="TEXT-ALIGN: right" width="73"> 
+      <input class="button" onclick="this.form.codeOut.select();this.form.codeOut.focus();" type="button" value="Selección" style="letter-spacing: -1pt"></td> 
+    </tr> 
+  </table> 
+  <p></p> 
+</form> 
+ 
+</body> 
+ 
+</html> 
+</center> 
+ 
+</body> 
+ 
+</html>
+

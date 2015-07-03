@@ -1,0 +1,377 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+<meta name="generator" content="Web Page Maker V2">
+<style type="text/css">
+/*----------Text Styles----------*/
+.ws20 {font-size: 27px;}
+.wpmd {font-size: 13px;font-family: 'Arial';font-style: normal;font-weight: normal;}
+/*----------Para Styles----------*/
+DIV,UL,OL /* Left */
+{
+ margin-top: 0px;
+ margin-bottom: 0px;
+}
+</style>
+<style type="text/css">
+div#container
+{
+	position:relative;
+	width: 100%;
+	margin-top: 0px;
+	margin-left: auto;
+	margin-right: auto;
+	text-align:left; 
+}
+body {text-align:center;margin:0}
+</style>
+<style>
+.Item {
+   cursor: hand;
+   font-family: verdana; 
+   font-size: 20;
+   font-style: normal;
+   background-color: white;
+   color: black;
+ }
+.Highlight {
+   cursor: hand; 
+   font-family: verdana;
+   font-size: 20;
+   font-style: italic;
+   background-color: gray;
+   color: blue;
+ }
+ table {
+  border: gray 5px solid;
+}
+
+</style>
+
+<script type="text/javascript">
+
+var itemRowCntr = 0;
+function rollon(myid) {
+var el =document.getElementById(myid);
+	el.origColor=el.style.backgroundColor;
+	el.style.backgroundColor='#AACAEE';
+} 
+function rolloff(myid) {
+var el =document.getElementById(myid);
+	el.style.backgroundColor=el.origColor;
+} 
+
+function loadTags()
+{
+	documentoXML = importaXML("BAC_CONFIG.xml");
+	document.getElementById("TagPolFrec").value = documentoXML.getElementsByTagName("TagPolFrec")[0].firstChild.nodeValue;
+	document.getElementById("TagPolEnable").checked = Number(documentoXML.getElementsByTagName("TagPolEnable")[0].firstChild.nodeValue);
+	document.getElementById("TagResetList").checked = Number(documentoXML.getElementsByTagName("TagResetList")[0].firstChild.nodeValue);
+	document.getElementById("TagMirrorFrame").checked = Number(documentoXML.getElementsByTagName("TagMirrorFrame")[0].firstChild.nodeValue);	
+//	setTimeout("loadTags()", 1000); 	
+}
+
+function importaXML(archivo)
+{
+	var xmlDoc;
+	if (window.ActiveXObject) 	// code for IE
+	{
+		xmlDoc=new ActiveXObject("Microsoft.XMLDOM");
+		xmlDoc.async=false;
+		xmlDoc.load(archivo);
+	}
+	else		// mozxilla, chrome, zafari, opera
+	{
+		var xmlhttp = new window.XMLHttpRequest();
+		xmlhttp.open("GET",archivo,false);
+		xmlhttp.send(null);
+		xmlDoc = xmlhttp.responseXML.documentElement;	  
+	}
+	return(xmlDoc);
+}
+
+function runCGI(archivo)
+{
+	var xmlhttp = new window.XMLHttpRequest();
+	xmlhttp.open("GET",archivo,false);
+	xmlhttp.send(null);
+}
+
+function addNewRow()
+{
+	documentoXML = importaXML("MAQTABLE_01.xml");
+	copyRow(documentoXML);
+	documentoXML = importaXML("MAQTABLE_02.xml");
+	copyRow(documentoXML);
+	documentoXML = importaXML("MAQTABLE_03.xml");
+	copyRow(documentoXML);
+	documentoXML = importaXML("MAQTABLE_04.xml");
+	copyRow(documentoXML);
+	documentoXML = importaXML("MAQTABLE_05.xml");
+	copyRow(documentoXML);
+}
+
+function copyRow(xmlDoc) 
+{
+	var TABLE = document.getElementById("BaseTable");
+	var TROW = document.getElementById("BaseTrow");
+	var content = TROW.getElementsByTagName("td");
+	//var x=xmlDoc.getElementsByTagName("GWY");
+	var newRow = TABLE.insertRow(-1);
+	newRow.className = TROW.attributes['class'].value;
+	itemRowCntr++;
+
+	newRow.onmouseover = function()
+		{
+			this.origColor=this.style.backgroundColor;
+			this.style.backgroundColor='#AACAEE';
+		}
+	newRow.onmouseout = function()
+		{
+			this.style.backgroundColor=this.origColor;
+		} 
+		
+	var newSpan;	
+	var newCell_1 = newRow.insertCell(newRow.cells.length);
+	//newCell_1.innerHTML = xmlDoc.getElementsByTagName("MAQ_MODBUS_OFF")[0].firstChild.nodeValue;
+	//newCell_1.contentEditable ='true';
+	newSpan = document.createElement('span');
+	newSpan.setAttribute('id', 'F'+itemRowCntr+'_C0');
+	newSpan.setAttribute('contentEditable', 'true');
+	newCell_1.appendChild(newSpan);
+	newSpan.innerHTML = xmlDoc.getElementsByTagName("MAQ_MODBUS_OFF")[0].firstChild.nodeValue;
+
+	var newCell_2 = newRow.insertCell(newRow.cells.length);
+	newSpan = document.createElement('span');
+	newSpan.setAttribute('id', 'F'+itemRowCntr+'_C1');
+	newSpan.setAttribute('contentEditable', 'true');
+	newCell_2.appendChild(newSpan);
+	newSpan.innerHTML = xmlDoc.getElementsByTagName("MAQ_MODBUS_FC")[0].firstChild.nodeValue;
+
+	var newCell_3 = newRow.insertCell(newRow.cells.length);
+	newSpan = document.createElement('span');
+	newSpan.setAttribute('id', 'F'+itemRowCntr+'_C2');
+	newSpan.setAttribute('contentEditable', 'true');
+	newCell_3.appendChild(newSpan);
+	newSpan.innerHTML = xmlDoc.getElementsByTagName("MAQ_MODBUS_LEN")[0].firstChild.nodeValue;
+
+	var newCell_4 = newRow.insertCell(newRow.cells.length);
+	newSpan = document.createElement('span');
+	newSpan.setAttribute('id', 'F'+itemRowCntr+'_C3');
+	newSpan.setAttribute('contentEditable', 'false');
+	newCell_4.appendChild(newSpan);
+	newSpan.innerHTML = xmlDoc.getElementsByTagName("MAQ_MODBUS_ADD")[0].firstChild.nodeValue;
+
+	var newCell_5 = newRow.insertCell(newRow.cells.length);
+	newSpan = document.createElement('span');
+	newSpan.setAttribute('id', 'F'+itemRowCntr+'_C4');
+	newSpan.setAttribute('contentEditable', 'true');
+	newCell_5.appendChild(newSpan);
+	newSpan.innerHTML = xmlDoc.getElementsByTagName("MAQ_BANK_STAT")[0].firstChild.nodeValue;
+
+
+	var newCell_6 = newRow.insertCell(newRow.cells.length);
+	newSpan = document.createElement('span');
+	newSpan.setAttribute('id', 'F'+itemRowCntr+'_C5');
+	newSpan.setAttribute('contentEditable', 'false');
+	newCell_6.appendChild(newSpan);
+	newSpan.innerHTML = xmlDoc.getElementsByTagName("MAQ_OFFSET_INI")[0].firstChild.nodeValue;
+
+	if(newCell_1.addEventListener){
+		newCell_1.addEventListener("keyup", makeEditListener(TABLE, itemRowCntr, 0), false);
+		newCell_2.addEventListener("keyup", makeEditListener(TABLE, itemRowCntr, 1), false);
+		newCell_3.addEventListener("keyup", makeEditListener(TABLE, itemRowCntr, 2), false);
+		newCell_5.addEventListener("keyup", makeEditListener(TABLE, itemRowCntr, 4), false);
+	}
+	else{
+		newCell_1.attachEvent("onkeyup", makeEditListener(TABLE, itemRowCntr, 0));
+		newCell_2.attachEvent("onkeyup", makeEditListener(TABLE, itemRowCntr, 1));
+		newCell_3.attachEvent("onkeyup", makeEditListener(TABLE, itemRowCntr, 2));
+		newCell_5.attachEvent("onkeyup", makeEditListener(TABLE, itemRowCntr, 4));
+	}
+
+}
+
+function makeEditListener(table, row, col)
+{
+    return function(e)
+    {	
+		var code = (e.keyCode ? e.keyCode : e.which);
+		if(code != 13) { 
+		 return;
+		}	
+		
+        var cell = getCellElement(table, row, col);
+		//var text = cell.nodeValue;
+		var spanId = 'F'+row+'_C'+col;
+		
+		if (window.ActiveXObject) 	// code for IE
+		{
+			var textall = document.getElementById(spanId);
+			var text = textall.childNodes[0].innerHTML;
+		}
+		else		// mozxilla, chrome, zafari, opera
+		{
+			var text = document.getElementById(spanId).innerHTML;;
+		}
+				
+		for (extracntr = 1; extracntr < cell.parentNode.childNodes.length ; extracntr++)
+		{
+			cell.parentNode.removeChild(cell.parentNode.childNodes[extracntr]);
+		}		
+//        var items = split(text);
+//        if (items.length === 1) return;
+
+        var i;
+        var r = row;
+        var c = col;
+		
+		switch (col)
+		{
+			case 0:	//  offset
+				runCGI("gwywrite.cgi?MAQ_MODBUS_OFF_"+row+"="+text);
+				break;
+				
+			case 1:	//  offset
+				runCGI("gwywrite.cgi?MAQ_MODBUS_FC_"+row+"="+text);
+				actualizarMemOffset (table);
+				break;
+				
+			case 2:	//  len
+				runCGI("gwywrite.cgi?MAQ_MODBUS_LEN_"+row+"="+text);
+				actualizarMemOffset (table);
+				break;
+				
+			case 4:	//  estado
+				runCGI("gwywrite.cgi?MAQ_BANK_STAT_"+row+"="+text);
+				break;
+				
+			default:
+				break;
+		}
+		//cell.nodeValue = text;
+		splittext= text.split("<");
+		document.getElementById('F'+row+'_C'+col).innerHTML = splittext[0]; 
+		runCGI("gwywrite.cgi?GwySaveBanks=1");	// grabar en EEPROM
+
+    };
+}
+
+
+function actualizarMemOffset (table)
+{
+	for (row = 2; row <=5 ; row++)
+	{
+      var cell_memoff_prev = getCellElement(table, row-1, 5, true);
+      var cell_regs_prev = getCellElement(table, row-1, 2, true);
+      var cell_fc_prev = getCellElement(table, row-1, 1, true);
+	  
+      var cell_memoff_curr = getCellElement(table, row, 5, false);
+	  
+//	  if (parseInt(cell_fc_prev.nodeValue)==3)
+//		cell_memoff_curr.nodeValue = parseInt(cell_memoff_prev.nodeValue) + (2*parseInt(cell_regs_prev.nodeValue));	
+//	  if (parseInt(cell_fc_prev.nodeValue)==1)
+//		cell_memoff_curr.nodeValue = parseInt(cell_memoff_prev.nodeValue) + Math.ceil((parseInt(cell_regs_prev.nodeValue) / 8));
+
+		if (parseInt(cell_fc_prev)==3)
+		{
+			if (window.ActiveXObject) 	// code for IE
+				cell_memoff_curr.nodeValue = parseInt(cell_memoff_prev) + (2*parseInt(cell_regs_prev));			
+			else
+				cell_memoff_curr.textContent = parseInt(cell_memoff_prev) + (2*parseInt(cell_regs_prev));			
+		}
+		
+		
+		if (parseInt(cell_fc_prev)==1)
+		{
+			if (window.ActiveXObject) 	// code for IE
+				cell_memoff_curr.nodeValue = parseInt(cell_memoff_prev) + Math.ceil((parseInt(cell_regs_prev) / 8));
+			else
+				cell_memoff_curr.textContent = parseInt(cell_memoff_prev) + Math.ceil((parseInt(cell_regs_prev) / 8));
+		}
+		
+			if (window.ActiveXObject) 	// code for IE
+				runCGI("gwywrite.cgi?MAQ_OFFSET_INI_"+row+"="+cell_memoff_curr.nodeValue);	  
+			else
+				runCGI("gwywrite.cgi?MAQ_OFFSET_INI_"+row+"="+cell_memoff_curr.textContent);	  
+	}
+    return;
+}
+
+function getCellElement(table, row, col, inner)
+{
+    //return table.rows[row].cells[col].firstChild;	
+	var spanId = 'F'+row+'_C'+col;
+	if (window.ActiveXObject) 	// code for IE
+	{
+		var textall = document.getElementById(spanId);
+		var text = textall.childNodes[0];
+		if (text.childNodes.length)
+			text = text.childNodes[0];
+	}
+	else		// mozxilla, chrome, zafari, opera
+	{
+		var text = document.getElementById(spanId);;
+	}	
+	
+	if (inner)
+	{
+		if (window.ActiveXObject) 	// code for IE
+			return text.nodeValue;	
+		else
+			return text.textContent;			
+	}
+	else
+		return text;
+}
+
+
+  if ( window.addEventListener ) { 
+     window.addEventListener( "load", addNewRow, false );
+  }
+  else 
+     if ( window.attachEvent ) { 
+        window.attachEvent( "onload", addNewRow );
+  } else 
+        if ( window.onLoad ) {
+           window.onload = addNewRow;
+  }
+
+</script>
+</head>
+<body>
+<div id="container">
+<div id="shape1" style="position:absolute; overflow:hidden; left:0px; top:0px; width:100%; height:18px; z-index:1; background-color:#A8A8A8">&nbsp;</div>
+<div id="shape2" style="position:absolute; overflow:hidden; left:0px; top:82px; width:100%; height:18px; z-index:1; background-color:#A8A8A8">&nbsp;</div>
+<div id="shape3" style="position:absolute; overflow:hidden; text-align:right; left:0px; top:429px; width:100%; height:18px; z-index:1; background-color:#A8A8A8">&nbsp;<font color="#FFFFFF" face="Arial">© 2014 Ingenea S.R.L.</font></div>
+<div id="shape11" style="position:absolute; overflow:hidden; left:0px; top:19px; width:100%; height:62px; z-index:2; background-color:#1155AA">&nbsp;</div>
+<div id="text3" style="position:relative; overflow:hidden; top:30px; text-align:center; height:38px; z-index:3"><div class="wpmd">
+<div><font class="ws20" color="#FFFFFF" face="Tahoma">Gateway MODBUS TCP - MODBUS RTU</font></div>
+</div></div>
+<div id="table1" style="position:relative; overflow:hidden; width:100%; top:149px; height:207px; z-index:5"><div class="wpmd">
+<div><TABLE align="center" width="80%" id="BaseTable" class="Item" bgcolor="#FFFFFF" border=1 bordercolorlight="#C0C0C0" bordercolordark="#808080" >
+<TR valign=top id="BaseTrow" class="Items">
+<TD width="20%"><div class="Items">
+<div> OFFSET</div>
+</div></TD>
+<TD width="10%"><div class="Items">
+<div contenteditable="true">&nbsp; FC</div>
+</div></TD>
+<TD width="20%"><div class="Items">
+<div>&nbsp; REGISTROS</div>
+</div></TD>
+<TD width="15%"><div class="Items">
+<div>&nbsp; MAP</div>
+</div></TD>
+<TD width="15%"><div class="Items">
+<div>&nbsp; ESTADO</div>
+</div></TD>
+<TD width="20%"><div class="Items">
+<div>&nbsp; MEMOFF</div>
+</div></TD>
+</TR></TABLE>
+</div></div></div>
+</div>
+</body>
+</html>
